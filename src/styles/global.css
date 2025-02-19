@@ -1,0 +1,76 @@
+
+.justify-content-between {
+    justify-content: space-between;
+}
+
+
+.justify-content-evenly {
+    justify-content: space-evenly;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-start {
+    justify-content: center;
+}
+
+.justify-content-end {
+    justify-content: flex-end;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+.text-capitalize {
+    text-transform: capitalize;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.f-40 {
+    font-size: 40px;
+}
+
+.container-fuild {
+    width: 960px;
+    margin: 0px auto;
+    
+}
+
+.container {
+    width: 1170px;
+    margin: 0px auto;
+}
+
+:root {
+    --background-black: #000000;
+    --background-white: #ffff;
+    --text-color: #262626;
+    --text-color-hover: #D0021B;
+    --color-price: #888;
+    --color-icons-hover: #e2c215;
+    --text-white: #fff;
+    --color-border: #eee;
+    --color-bottom-line: #262626;
+    --border-bottom-line: #DDDBDC;
+    --text-button-hover:#f6891c;
+    --button-background-color: #f7c33f;
+    --arrow-background-color: rgba(247, 195, 63, 0.52);
+    --arrow-hover-background: rgba(247, 195, 63);
+    --color-background-before: rgba(0, 0, 0, 0.34);
+    --text-button-color: #2d4277;
+    --text-title: #2a2a2a;
+}
