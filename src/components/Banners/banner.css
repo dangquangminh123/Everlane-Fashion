@@ -1,0 +1,180 @@
+.Banner {
+    position: relative;
+    width: 100%;
+    height: 50rem;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.Banner .BannerBody {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.Banner .BannerBody .slick-list {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.Banner .BannerBody .slick-track {
+    display: flex !important;
+    align-items: center;
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.Banner .BannerBody .slick-slide {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    height: 75rem !important;
+    min-width: 100%;
+    min-height: 100%;
+    display: flex !important;
+    align-items: center;
+    position: relative;
+    opacity: 1 !important;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Cố định ảnh để không bị trống */
+.Banner .BannerBody .slick-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+
+/* Button Prev, Next */
+.Banner .PrevBtn,
+.Banner .NextBtn {
+    position: absolute;
+    outline: none;
+    border: none;
+    color: var(--text-white);
+    background: var(--arrow-background-color);
+    width: 3.3rem;
+    height: 3.3rem;
+    display: block;
+    font-size: 1.1em;
+    border-radius: 50%;
+    z-index: 2;
+    transition: all 0.4s ease-out;
+    opacity: 0; /* Ban đầu bị ẩn đi */
+}
+
+.Banner .PrevBtn {
+    top: 55%;
+    /* left: 2%; */
+    left: -4%;
+}
+
+.Banner .NextBtn{
+    top: 55%;
+    /* right: 2%; */
+    right: -4%;
+}
+
+/* hover vào Banner thì nút xuất hiện */
+.Banner .PrevBtn.show {
+    left: 2%;
+    opacity: 1;
+}
+
+.Banner .NextBtn.show {
+    right: 2%;
+    opacity: 1;
+}
+
+
+.Banner .PrevBtn:hover,
+.Banner .NextBtn:hover {
+    background: var(--arrow-hover-background);
+}
+
+/*End Button Prev, Next */
+
+/* BannerBody */
+
+.Banner .BannerBody .InfoImagesSlider{
+    position: absolute;
+    top: 45%;
+    left: 20%;
+    z-index: 3;
+    display: flex !important; /* 🔥 Đảm bảo hiển thị */
+    flex-direction: column;
+}
+
+.Banner .BannerBody .slick-current .InfoImagesSlider {
+    display: flex;
+    flex-direction: column;
+}
+
+.BannerBody .InfoImagesSlider .TitleSlider{
+    margin-bottom: 1rem;
+}
+
+.InfoImagesSlider .TitleSlider .TitleName {
+    font-size: 4em;
+    color: var(--text-white);
+}
+.BannerBody .InfoImagesSlider .DescriptionsTitle {
+   margin-bottom: 0.5rem;
+}
+
+.InfoImagesSlider .DescriptionsTitle .DetailDesc {
+    font-size: 1.0em;
+    color: var(--text-white);
+}
+
+.BannerBody .InfoImagesSlider .BtnSlider {
+
+}
+
+.InfoImagesSlider .BtnSlider .BtnDonateSlider {
+    text-decoration: none;
+    background-color: var(--button-background-color);
+    color: var(--text-button-color);
+    font-weight: 700;
+    padding: 1.0rem 2.3rem;
+    border-radius: 5px;
+    display: inline-block;
+    margin-right: 1.1rem;
+    transition: all 0.3s ease-in-out;
+}
+
+.InfoImagesSlider .BtnSlider .BtnDonateSlider:focus,
+.InfoImagesSlider .BtnSlider .BtnMoreSlider:focus {
+    outline: none;
+    background-color: var(--button-background-color);
+    color: var(--text-white);
+    text-decoration: none;
+}
+
+.InfoImagesSlider .BtnSlider .BtnDonateSlider:hover {
+    background-color: var(--button-background-color);
+    color: var(--text-white);
+}
+
+.InfoImagesSlider .BtnSlider .BtnMoreSlider {
+    text-decoration: none;
+    margin-left: 1.0rem;
+    background: none;
+    border: 1px solid var(--text-white);
+    color: var(--text-white);
+    font-weight: 700;
+    padding: 1.0rem 2.3rem;
+    border-radius: 5px;
+    display: inline-block;
+    transition: all 0.3s ease-in-out;
+}
+
+.InfoImagesSlider .BtnSlider .BtnMoreSlider:hover {
+    background-color: var(--button-background-color);
+    border-color: var(--button-background-color);
+}
+/* End BannerBody */
+

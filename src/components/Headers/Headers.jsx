@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col } from 'react-bootstrap'
 import  './Headers.css'
 import { Link } from 'react-router-dom'
@@ -9,34 +9,36 @@ import { LuShoppingCart } from "react-icons/lu";
 import cur from '../../assets/us 1.png'
 import logo from '../../assets/Logo.png'
 const Headers = () => {
-  // const [hoveredItem, setHoveredItem] = useState(null);
-  // const [menuPosition, setMenuPosition] = useState({ left: 0, top: 0 });
-
-  // const menuItems = [
-  //   { id: 1, name: "Woman", link: "/", subMenu: ["Áo", "Quần", "Giày"] },
-  //   { id: 2, name: "Men", link: "/", subMenu: ["Áo sơ mi", "Quần jeans", "Giày thể thao"] },
-  //   { id: 3, name: "About", link: "/", subMenu: ["Câu chuyện", "Lịch sử", "Đội ngũ"] },
-  //   { id: 4, name: "Everworld Stories", link: "/", subMenu: [] }
-  // ];
 
   const [activeMenu, setActiveMenu] = useState(null);
+  const subMenuRef = useRef(null);
 
   const menuItems = [
-    { id: 1, name: "Woman", link: "/", subMenu: ["Áo", "Quần", "Giày"] },
-    { id: 2, name: "Men", link: "/", subMenu: ["Áo sơ mi", "Quần jeans", "Giày thể thao"] },
-    { id: 3, name: "About", link: "/", subMenu: ["Câu chuyện", "Lịch sử", "Đội ngũ"] },
+    { id: 1, name: "Woman", link: "/", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
+    { id: 2, name: "Men", link: "/", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
+    { id: 3, name: "About", link: "/", subMenu: ["Stores", "Factories", "Environmental Initiatives", "Our Carbon Commitment", "Annual Impact Report", "Cleaner Fashion"] },
     { id: 4, name: "Everworld Stories", link: "/", subMenu: [] }
   ];
 
-  const handleMouseEnter = (id) => {
-      if (menuItems.find(item => item.id === id).subMenu.length > 0) {
-        setHoveredItem(id);
+  const handleMenuClick = (id, event) => {
+    event.preventDefault(); // Ngăn điều hướng nếu có submenu
+    event.stopPropagation(); // Ngăn sự kiện lan ra ngoài
+    setActiveMenu(activeMenu === id ? null : id); // Toggle menu
+  };
+
+  useEffect(() => {
+    // Khi click bên ngoài submenu, đóng submenu lại
+    const handleClickOutside = (event) => {
+      if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
+        setActiveMenu(null);
       }
     };
-  
-    const handleMouseLeave = () => {
-      setTimeout(() => setHoveredItem(null), 200); // Delay để tránh flicker
+
+    document.addEventListener("click", handleClickOutside);
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
     };
+  }, []);
   
   return (
     <>
@@ -55,40 +57,13 @@ const Headers = () => {
       <div className="Header d-flex justify-content-center">
                 <Col xs={12} md={4}>
                 <ul className="menuHeader">
-                      {/* <li 
-                        className="itemsMenu"
-                        onMouseEnter={() => setIsHovering(true)}
-                        onMouseLeave={() => setTimeout(() => setIsHovering(false), 200)}
-                      >
-                      <Link to="/" className="itemChildrens">
-                          Woman
-                      </Link>
-                      
-                      </li>
-
-                      <li className='itemsMenu'>
-                        <Link to={"/"} className='itemChildrens'>
-                            Men
-                        </Link>
-                      </li>
-                      <li className='itemsMenu'>
-                        <Link to={"/"} className='itemChildrens'>
-                            About
-                        </Link>
-                      </li>
-                      <li className='itemsMenu'>
-                        <Link to={"/"} className='itemChildrens'>
-                            Everworld Stories
-                        </Link>
-                      </li> */}
                      {menuItems.map((item) => (
-                      <li
-                        key={item.id}
-                        className="itemsMenu"
-                        onMouseEnter={() => setActiveMenu(item.id)}
-                        onMouseLeave={() => setActiveMenu(null)}
-                      >
-                        <Link to={item.link} className="itemChildrens">{item.name}</Link>
+                      <li key={item.id} className="itemsMenu">
+                        <Link to={item.subMenu.length > 0 ? "#" : item.link}
+                          className="itemChildrens"
+                          onClick={(e) => handleMenuClick(item.id, e)}>
+                            {item.name}
+                        </Link>
                       </li>
                     ))}
                 </ul>
@@ -122,18 +97,15 @@ const Headers = () => {
       </div>
       
       {/* SubMenu - Nằm ngoài Header */}
-      <ul
-        className={`subMenu ${activeMenu !== null ? "show" : ""}`}
-        onMouseEnter={() => setActiveMenu(activeMenu)}
-        onMouseLeave={() => setActiveMenu(null)}
-      >
-        {activeMenu !== null &&
-          menuItems.find((item) => item.id === activeMenu)?.subMenu.map((sub, index) => (
+      {activeMenu !== null && (
+        <ul className={`subMenu show`} ref={subMenuRef} onClick={(e) => e.stopPropagation()}>
+          {menuItems.find((item) => item.id === activeMenu)?.subMenu.map((sub, index) => (
             <li key={index} className="subItems">
               <Link to="/" className="subChildrens">{sub}</Link>
             </li>
           ))}
-      </ul>
+        </ul>
+      )}
     </>
   )
 }
