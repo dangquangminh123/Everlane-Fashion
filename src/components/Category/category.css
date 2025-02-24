@@ -1,0 +1,75 @@
+.CategoryBox{
+
+}
+
+.CategoryBox .CategoryHeader{
+    margin-bottom: 2em;
+    margin-top: 3em;
+}
+
+.CategoryBox .CategoryHeader .CategoryTitle {
+    text-align: center;
+    text-transform: capitalize;
+    margin: 0;
+    font-weight: 300;
+    line-height: 1.8;
+}
+
+.CategoryBox .CategoryBody {
+
+}
+
+.CategoryBox .CategoryBody .ListCategory {
+    display: flex;
+    align-items: center;
+    margin: 0rem 1.4rem;
+}
+
+.CategoryBox .CategoryBody .ListCategory .ItemCategory {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}   
+
+.CategoryBody .ListCategory .ItemCategory .PictureCategory {
+    text-decoration: none;
+    display: block;
+    max-width: 100%;
+    color: var(--text-white);
+    overflow: hidden;
+
+}
+
+.ListCategory .ItemCategory .PictureCategory img {
+    width: 17.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+
+}
+
+.CategoryBody .ListCategory .ItemCategory:hover .PictureCategory img {
+    transform: scale(1.2);
+}
+
+.ListCategory .ItemCategory .NameCategory {
+    text-decoration: none;
+    color: var(--text-white);
+    text-transform: capitalize;
+    font-size: 1.0em;
+}
+
+.ListCategory .ItemCategory .NameCategory .TitleCategory {
+    text-decoration: none;
+    color: var(--color-bottom-line);
+    text-transform: capitalize;
+    margin-top: 0.8em;
+    border-bottom: 1.5px solid var(--color-bottom-line);
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.ListCategory .ItemCategory:hover .NameCategory .TitleCategory {
+    color: var(--category-title-hover);
+    border-bottom: 1.5px solid var(--category-title-hover);
+}

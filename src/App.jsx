@@ -14,14 +14,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Header from "./components/Headers/Headers";
 import Home from "./pages/Home/Home";
-import Navbar from "./components/Navbar/Navbar";
 
 
 const Layout = () =>{
   return (
     <div className='layout-app'>
       <Header />
-      <Navbar />
       <Outlet/>
       {/* <Footer /> */}
     </div>

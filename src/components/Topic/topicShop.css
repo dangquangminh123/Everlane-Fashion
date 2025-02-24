@@ -1,0 +1,47 @@
+.TopicBox {
+    margin: 3.5em 1.4em 0em 1.4em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.TopicBox .ItemTopic {
+   position: relative;
+   max-width: 100%;
+   overflow: hidden;
+}
+
+.TopicBox .ItemTopic img {
+    object-fit: cover;
+    object-fit: cover;
+    width: 35em;
+}   
+
+.ItemTopic .InfoTopic {
+    position: absolute;
+    top: 38%;
+    left: 25%;
+}
+
+.ItemTopic .InfoTopic .TitleTopic {
+    font-size: 2.2rem;
+    color: var(--text-white);
+    text-align: justify;
+    text-transform: capitalize;
+    font-weight: 400;
+    margin-bottom: 0.9em;
+}
+
+.ItemTopic .InfoTopic .TopicBtn {
+    border: none;
+    outline: none;
+    display: block;
+    width: 18em;
+    height: 2.7em;
+    padding: 0.3em 0em;
+    text-transform: uppercase;
+    font-size: 1em;
+    font-weight: 500;
+    background: var(--background-white);
+    color: var(--text-title);
+}

@@ -30,21 +30,17 @@ const Banner = () => {
 
     useEffect(() => {
         
-        if (sliderRef.current) {
-            console.log("Slider Instance:", sliderRef.current);
-            console.log("Available Methods:", Object.keys(sliderRef.current)); // Xem các phương thức có hoạt động không
-        }
     }, []);
 
     const settings = {
         dots: false,
         infinite: true,
-        speed: 500,
-        // slidesToShow: 1,
+        speed: 1500,
+        slidesToShow: 1,
         slidesToScroll: 1,
-        // autoplay: true,
+        autoplay: true,
         arrows: true,
-        autoplaySpeed: 1000,
+        autoplaySpeed: 1200,
     }
 
   return (
