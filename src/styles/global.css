@@ -72,6 +72,7 @@
     --arrow-background-color: rgba(247, 195, 63, 0.52);
     --arrow-hover-background: rgba(247, 195, 63);
     --color-background-before: rgba(0, 0, 0, 0.34);
+    --gradient-background-button: linear-gradient(90deg, #F72585, #B5179E);
     --text-button-color: #2d4277;
     --text-title: #2a2a2a;
 }

@@ -1,3 +1,4 @@
+/* Topics */
 .TopicBox {
     margin: 3.5em 1.4em 0em 1.4em;
     display: flex;
@@ -13,9 +14,25 @@
 
 .TopicBox .ItemTopic img {
     object-fit: cover;
-    object-fit: cover;
     width: 35em;
+    transition: opacity 0.3s ease-in-out;
 }   
+
+/* Khi hover vào ItemTopic */
+.TopicBox .ItemTopic:hover img {
+    animation: flashEffect 2s linear; /* Gọi animation nhấp nháy */
+}
+
+/* Tạo hiệu ứng nhấp nháy kiểu ánh sáng */
+@keyframes flashEffect {
+    0% { opacity: 1; }
+    20% { opacity: 0.3; } /* Làm tối dần */
+    40% { opacity: 1; }  /* Trở về bình thường */
+    60% { opacity: 0.3; } /* Làm tối dần lần nữa */
+    80% { opacity: 1; }
+    100% { opacity: 1; } /* Quay về trạng thái ban đầu */
+}
+
 
 .ItemTopic .InfoTopic {
     position: absolute;
@@ -24,24 +41,301 @@
 }
 
 .ItemTopic .InfoTopic .TitleTopic {
-    font-size: 2.2rem;
+    font-size: 2.8rem;
     color: var(--text-white);
-    text-align: justify;
-    text-transform: capitalize;
-    font-weight: 400;
+    font-weight: 300;
     margin-bottom: 0.9em;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+}
+
+.ItemTopic .InfoTopic .TitleTopic:hover {
+    font-weight: 400;
+    color: var(--button-background-color);
 }
 
 .ItemTopic .InfoTopic .TopicBtn {
+    position: relative;
     border: none;
     outline: none;
-    display: block;
+    display: inline-block;
     width: 18em;
     height: 2.7em;
-    padding: 0.3em 0em;
+    padding: 0.3em 0;
     text-transform: uppercase;
     font-size: 1em;
     font-weight: 500;
-    background: var(--background-white);
-    color: var(--text-title);
+    background: var(--background-white); /* Màu nền ban đầu */
+    color: var(--text-title);            /* Màu chữ ban đầu */
+    overflow: hidden;                    /* Ẩn phần hiệu ứng tràn ra ngoài */
+    transition: color 3s ease-in-out;           /* Chuyển màu chữ từ từ trong 5 giây */
+    z-index: 1;      
 }
+
+/* lớp giả nền lan tỏa */
+.ItemTopic .InfoTopic .TopicBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;                         /* Bắt đầu từ giữa nút */
+    width: 0;                          /* Ban đầu chưa có hiệu ứng lan */
+    height: 100%;                      /* Chiếm toàn bộ chiều cao của nút */
+    background: var(--gradient-background-button); /* Gradient hồng thời trang */
+    transform: translateX(-50%);       /* Căn giữa theo trục ngang */
+    transition: width 3s ease-in-out;         /* Hiệu ứng mở rộng từ từ trong 5 giây */
+    z-index: -1; /* đảm bảo rằng chữ không bị che đi */
+}
+
+
+/* Khi hover, nền tràn từ giữa ra */
+.ItemTopic .InfoTopic .TopicBtn:hover::before {
+    width: 100%;
+}
+
+/* Khi bỏ hover, nền biến mất ngay */
+.ItemTopic .InfoTopic .TopicBtn:not(:hover)::before {
+    transition: width 0.4s ease-in-out;
+    width: 0;
+}
+
+/* Khi hover: đổi màu chữ */
+.ItemTopic .InfoTopic .TopicBtn:hover {
+    color: var(--text-white);
+}
+
+/* End Topic */
+.ExtraTopic {
+    margin: 7.5em 1.4em 0em 1.4em;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+}
+
+.ExtraTopic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 2s ease-in-out;
+}
+
+.ExtraTopic:hover img {
+    animation: sphereFall 2.5s ease-in-out forwards;
+}
+
+
+.ExtraTopic .DetailsExtra {
+    position: absolute;
+    top: 35%;
+    left: 30%;
+    text-align: center;
+}
+
+.ExtraTopic .DetailsExtra .titleExtra{
+    color: white; /* Ban đầu chữ có màu trắng */
+    font-size: 2.2rem;
+    margin-bottom: 0.5em;
+    font-weight: 300;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.ExtraTopic .DetailsExtra .titleExtra span {
+    display: inline-block;
+    position: relative;
+    color: white; /* Ban đầu giữ màu trắng */
+    transition: color 0.6s ease-in-out, transform 0.6s ease-in-out;
+}
+
+/* Hover vào thì từng chữ đổi màu theo thứ tự */
+.ExtraTopic .DetailsExtra .titleExtra:hover span {
+    animation: colorFlow 1s forwards;
+    animation-delay: var(--delay);
+}
+
+.ExtraTopic .DetailsExtra .descriptionExtra {
+    font-size: 1em;
+    font-weight: 300;
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    color: var(--text-white); /* Ban đầu màu trắng */
+}
+
+/* Mỗi ký tự trong description */
+.ExtraTopic .DetailsExtra .descriptionExtra span {
+    display: inline-block;
+    position: relative;
+    transition: color 0.8s ease-in-out, transform 0.8s ease-in-out;
+    color: var(--text-white); /* Ban đầu cũng là màu trắng */
+    opacity: 1;
+}
+
+/* Khi hover vào thì từng chữ sẽ đổi màu dần dần */
+.ExtraTopic .DetailsExtra .descriptionExtra:hover span {
+    animation: colorFlow 1s forwards;
+    animation-delay: var(--delay);
+}
+
+/* BtnExtra */
+.ExtraTopic .DetailsExtra .ExtraBtn {
+    position: relative;
+    overflow: hidden;
+    outline: none;
+    border: none;
+    text-transform: uppercase;
+    display: inline-block;
+    width: 16em;
+    height: 2.3em;
+    font-size: 1.1em;
+    font-weight: 200;
+    margin-top: 1.5em;
+    padding: 0;
+    color: var(--background-black); /* Ban đầu chữ màu đen */
+    background-color: var(--text-white); /* Ban đầu nền trắng */
+    transition: color 0.5s ease-in-out;
+}
+
+/* 🟡 Hiệu ứng nước màu chạy từ trái sang phải */
+.ExtraTopic .DetailsExtra .ExtraBtn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, #ff3d00, #ff8c00);
+    transform: translateX(-100%);
+    transition: transform 1s ease-in-out;
+}
+
+/* 🟡 Khi hover, màu chạy từ trái qua */
+.ExtraTopic .DetailsExtra .ExtraBtn:hover::before {
+    transform: translateX(0);
+}
+
+/* 🟡 Chữ đổi màu dần từ trái sang khi nền chạy qua nó */
+.ExtraTopic .DetailsExtra .ExtraBtn span {
+    display: inline-block;
+    position: relative;
+    z-index: 2; /* Để chữ không bị che mất */
+    transition: color 0.8s ease-in-out;
+    color: var(--background-black); /* Chữ ban đầu màu đen */
+}
+
+/* Khi hover, từng ký tự đổi màu theo thứ tự */
+.ExtraTopic .DetailsExtra .ExtraBtn:hover span {
+    animation: textColorChange 1s forwards;
+    animation-delay: var(--delay);
+}
+
+/* 🟡 Ánh sáng kim cương xuất hiện khi màu nền đã chạy đầy đủ */
+.ExtraTopic .DetailsExtra .ExtraBtn::after {
+    content: "";
+    position: absolute;
+    top: -2em;
+    right: -2em;
+    width: 3.5em;
+    height: 3.5em;
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0.9) 30%,
+        rgba(255, 255, 255, 0.5) 60%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    box-shadow: 
+        0 0 2em rgba(255, 255, 255, 1),
+        0 0 3em rgba(255, 255, 255, 0.9),
+        0 0 4em rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    transform: scale(0);
+    opacity: 0;
+    transition: transform 0.6s ease-in-out, opacity 0.4s ease-in-out;
+    animation-delay: 1s; /* Chờ background đổi xong */
+}
+
+
+.ExtraTopic .DetailsExtra .ExtraBtn:hover::after {
+    opacity: 1;
+    transform: scale(2);
+    animation: diamondSparkle 1.5s ease-in-out forwards;
+}
+
+/* Hover out: Trả về trạng thái ban đầu */
+.ExtraTopic .DetailsExtra .ExtraBtn:not(:hover)::before {
+    transform: translateX(-100%);
+}
+
+.ExtraTopic .DetailsExtra .ExtraBtn:not(:hover) span {
+    animation: textColorChangeReverse 1s forwards;
+}
+
+
+/* 🟡 Keyframes cho hình ảnh rơi như quả cầu */
+@keyframes sphereFall {
+    0% { 
+        transform: translateY(-100px) rotateX(0deg) scale(0.5); 
+        opacity: 0; 
+        box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5); /* Bóng mờ mạnh lúc bắt đầu */
+    }
+    25% { 
+        transform: translateY(-75px) rotateX(90deg) scale(0.7); 
+        opacity: 0.5; 
+        box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.4); /* Bóng mờ giảm nhẹ */
+    }
+    50% { 
+        transform: translateY(-50px) rotateX(180deg) scale(0.85); 
+        opacity: 0.8; 
+        box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3); /* Bóng mờ ít hơn */
+    }
+    75% { 
+        transform: translateY(-20px) rotateX(270deg) scale(1); 
+        opacity: 0.9; 
+        box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.2); /* Gần như rõ nét */
+    }
+    100% { 
+        transform: translateY(0px) rotateX(360deg) scale(1); 
+        opacity: 1; 
+        box-shadow: 0px 0px 0px rgba(0, 0, 0, 0); /* Không còn bóng mờ */
+    }
+}
+
+/* KeyFrames cho chữ màu chuyển sắc dần */
+@keyframes colorFlow {
+    0% { color: var(--text-white); opacity: 1; transform: translateX(0px); font-weight: 300;}
+    30% { color: #ff8c00; opacity: 1; transform: translateX(-2px); font-weight: 300;}
+    60% { color: #ff3d00; opacity: 1; transform: translateX(0px); font-weight: 500;}
+    100% { color: #ff3d00; opacity: 1; font-weight: 500;}
+}
+
+/* 🌟 Hiệu ứng ánh sáng tia chéo như kim cương */
+@keyframes diamondSparkle {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+        filter: blur(1em);
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 1;
+        filter: blur(0);
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+        filter: blur(1.5em);
+    }
+}
+@keyframes textColorChange {
+    0% { color: var(--background-black); }
+    100% { color: var(--text-white); } /* Khi nền chạy qua, chữ đổi màu */
+}
+
+/* Trả chữ về màu đen */
+@keyframes textColorChangeReverse {
+    0% { color: var(--text-white); }
+    100% { color: var(--background-black); }
+}
+
