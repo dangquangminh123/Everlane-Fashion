@@ -28,11 +28,10 @@
 }
 
 .Favorites .FavoritesBody .SwiperContainer {
-    /* display: flex;
+    display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0 1.4em;  */
-    padding: 0 1.4em;
+    padding: 0 1.4em; 
     width: 100%;
     overflow: hidden;
 }
@@ -87,16 +86,16 @@
 
 
 .Favorites .FavoritesBody .ListFavorites .ItemsFavorites {
-    flex: 0 0 calc(100% / 4); /* Chia đều 4 phần tử */
-    width: 30em;
+    /* flex: 0 0 calc(100% / 4); */
+    width: 25em;
     height: 40em;
-    max-width: 23em;
+    /* max-width: 45em; */
     display: flex;
-    flex-direction: column; /* Chia bố cục theo chiều dọc */
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     margin: 0 0.9em;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .Favorites .FavoritesBody .ListFavorites .swiper-slide {
@@ -107,8 +106,8 @@
 
 .ListFavorites .ItemsFavorites .ImagesItems {
     width: 100%;
-    flex-grow: 1;  /* Phần này sẽ mở rộng để chiếm hết không gian có thể */
-    max-height: 70%; /* Giới hạn chiều cao của ảnh */
+    flex-grow: 1; 
+    max-height: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
