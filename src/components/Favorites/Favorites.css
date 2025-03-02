@@ -1,0 +1,185 @@
+.Favorites {
+    width: 100vw; /* Chiếm toàn bộ chiều rộng màn hình */
+    margin: 4em 0em 1em 0em;
+}
+
+.Favorites .FavoritesHeader {
+    text-align: center;
+}
+
+.FavoritesHeader .TitleFavorites {
+    font-weight: 300;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.FavoritesHeader .DescriptionFavorites {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.Favorites .FavoritesBody {
+    margin-top: 1.9em;
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+}
+
+.Favorites .FavoritesBody .SwiperContainer {
+    /* display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.4em;  */
+    padding: 0 1.4em;
+    width: 100%;
+    overflow: hidden;
+}
+
+.Favorites .FavoritesBody .ListFavorites .swiper-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* Căn giữa thủ công */
+    transition: transform 0.3s ease-in-out;
+}
+
+.SlideFavorites {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 100%;
+    padding: 0 1.4em;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+
+.Favorites .FavoritesBody .ListFavorites {
+    display: flex;
+    justify-content: flex-start;
+    width: 100% !important;
+    height: 100%;
+    max-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    white-space: nowrap; /* Giữ nội dung trong cùng một hàng */
+}
+
+
+.Favorites .FavoritesBody .FavPreBtn,
+.Favorites .FavoritesBody .FavNextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    cursor: pointer;
+    z-index: 10; /* Đảm bảo nút hiển thị trên cùng */
+}
+
+.Favorites .FavoritesBody .FavPreBtn {
+    left: 0.5%;
+}
+
+.Favorites .FavoritesBody .FavNextBtn {
+    right: 0.5%;
+}
+
+
+.Favorites .FavoritesBody .ListFavorites .ItemsFavorites {
+    flex: 0 0 calc(100% / 4); /* Chia đều 4 phần tử */
+    width: 30em;
+    height: 40em;
+    max-width: 23em;
+    display: flex;
+    flex-direction: column; /* Chia bố cục theo chiều dọc */
+    align-items: center;
+    justify-content: flex-start;
+    margin: 0 0.9em;
+    overflow: hidden; 
+}
+
+.Favorites .FavoritesBody .ListFavorites .swiper-slide {
+    flex: 0 0 auto !important;
+    width: 20em !important;
+    height: 32em !important; 
+}
+
+.ListFavorites .ItemsFavorites .ImagesItems {
+    width: 100%;
+    flex-grow: 1;  /* Phần này sẽ mở rộng để chiếm hết không gian có thể */
+    max-height: 70%; /* Giới hạn chiều cao của ảnh */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.ListFavorites .ItemsFavorites .ImagesItems .OneImages {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.ListFavorites .ItemsFavorites .ImagesItems .OneImages img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ListFavorites .ItemsFavorites .InfoItems {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-self: stretch;
+    margin-top: 1em;
+    align-items: flex-start;
+    padding: 1em 0em;
+    text-align: center;
+    flex-shrink: 0; /* Không cho phần này co lại */
+}
+
+.ListFavorites .ItemsFavorites .InfoItems .NameColorItems {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ItemsFavorites .InfoItems .NameColorItems .NameItems{
+    text-decoration: none;
+    color: var(---text-title);
+    font-size: 1em;
+    font-weight: 400;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.ItemsFavorites .InfoItems .NameColorItems .ColorItems {
+    color: var(--color-type);
+    font-size: 0.8em;
+    font-weight: 300;
+    text-align: left;
+}
+
+.ListFavorites .ItemsFavorites .InfoItems .PriceSoldItems {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.ItemsFavorites .InfoItems .PriceSoldItems .PriceItems {
+    color: var(--text-color);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: right;
+}
+
+.ItemsFavorites .InfoItems .PriceSoldItems .SoldItems{
+    color: var(--text-color-hover);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: right;
+}

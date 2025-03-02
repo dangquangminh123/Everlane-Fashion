@@ -7,6 +7,10 @@ import './styles/reset.css'
 import './styles/global.css'
 import './styles/main.css'
 import './App.css'
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import "swiper/css/effect-fade";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
