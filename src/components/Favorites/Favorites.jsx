@@ -7,8 +7,6 @@ import favorites4 from '../../assets/Favorites/Favorites6.png';
 import favorites5 from '../../assets/Favorites/Favorites7.png';
 import { GrPrevious } from "react-icons/gr";
 import { GrNext } from "react-icons/gr";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
 
 import './Favorites.css'
 
@@ -19,6 +17,9 @@ const ListFavorites = [
     { id: 3, img: favorites3, name: "The Slim 4-Way Stretch Organic Jean | Uniform", color: "Dark Indigo", price: "98", sold: "16"},
     { id: 4, img: favorites4, name: "The Essential Organic Crew", color: "Vintage Black", price: "30", sold: "20"},
     { id: 5, img: favorites5, name: "The Waffle Long-Sleeve Crew", color: "Bone", price: "60", sold: "11"},
+    { id: 1, img: favorites1, name: "The Waffle Long-Sleeve Crew", color: "Bone", price: "60", sold: "14"},
+    { id: 2, img: favorites2, name: "The Bomber Jacket | Uniform", color: "Toasted Coconut", price: "148", sold: "10"},
+    { id: 3, img: favorites3, name: "The Slim 4-Way Stretch Organic Jean | Uniform", color: "Dark Indigo", price: "98", sold: "16"},
 ];
 
 const Favorites = () => {
@@ -87,6 +88,17 @@ const Favorites = () => {
                 <button className="FavNextBtn" onClick={slideNext}>
                     <GrNext />
                 </button>
+
+                  {/* Pagination Dots */}
+                <div className="PaginationDots">
+                    {Array.from({ length: totalSlides }).map((_, index) => (
+                        <span
+                            key={index}
+                            className={`dot ${currentIndex === index ? "active" : ""}`}
+                            onClick={() => setCurrentIndex(index)} // Click vào dot để chuyển slide
+                        />
+                    ))}
+                </div>
             </div>
         </div>
     );

@@ -1,0 +1,158 @@
+.Reviews {
+    margin: 7em 1.4em;
+    position: relative;
+    max-width: 100%;
+    overflow: visible;
+}
+
+.Reviews .ReviewsBody {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: 42em;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+.Reviews .RevPevtBtn,
+.Reviews .RevNextBtn {
+    position: absolute;
+    top: 49%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 10; 
+    transition: all 0.3s ease-in;
+}
+
+.Reviews .RevPevtBtn:hover,
+.Reviews .RevNextBtn:hover {
+    background: var(--text-button-hover);
+    color: var(--color-button-nextprev);
+    border-radius: 50%;
+    display: block;
+    width: 1.5em;
+    line-height: 1;
+    font-weight: 300;
+    height: 1.5em;
+}
+
+.Reviews .RevPevtBtn {
+    left: 0.2%;
+}
+
+.Reviews .RevNextBtn {
+    right: 0.2%;
+}
+
+.Reviews .ReviewsBody .DetailsReviews,
+.Reviews .ReviewsBody .DetailsAuth {
+    flex: 0 0 50%;
+    max-width: 50%;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.Reviews .ReviewsBody .DetailsReviews {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 2em;
+    padding-left: 10em;
+}
+
+.Reviews .ReviewsBody .DetailsReviews .PeopleSay {
+    font-size: 1.2em;
+    font-weight: 300;
+    text-transform: capitalize;
+    color: #000000;
+}
+
+.ReviewsBody .DetailsReviews .GeneraReview {
+    margin-top: 3em;
+    width: 70%;
+}
+
+.ReviewsBody .DetailsReviews .GeneraReview .NumberStar {
+    font-size: 1.4em;
+}
+
+.ReviewsBody .DetailsReviews .GeneraReview .DetailsContent {
+    font-weight: 200;
+    text-align: justify;
+    font-size: 1.6em;
+}
+
+.ReviewsBody .DetailsReviews .GeneraReview .AuthProduct{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.ReviewsBody .DetailsReviews .GeneraReview .AuthProduct .NameAuth {
+    margin-right: 1em;
+    font-weight: 300;
+    font-size: 0.9em;
+}
+
+.ReviewsBody .DetailsReviews .GeneraReview .AuthProduct .ProductName {
+    text-transform: capitalize;
+    text-decoration: underline;
+    font-weight: 300;
+    font-size: 1.1em;
+}
+
+
+/* Details Review bên phải */
+.Reviews .ReviewsBody .DetailsAuth {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    height: 100%;
+    padding: 0em 10em;
+}
+
+.ReviewsBody .DetailsAuth .ImagesAuth {
+   width: 100%;
+   height: 100%;
+}
+
+.ReviewsBody .DetailsAuth .ImagesAuth img {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+.Reviews .ReviewFooter {
+    margin-top: 6em;
+    border: 0.09em solid #dddd;
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+/* Dots Pagination */
+.custom-pagination {
+    position: absolute;
+    bottom: 3em !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 10;
+}
+
+.custom-pagination .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: gray;
+    opacity: 0.5;
+    transition: all 0.3s ease;
+}
+
+.custom-pagination .swiper-pagination-bullet-active {
+    background: black;
+    opacity: 1;
+}
