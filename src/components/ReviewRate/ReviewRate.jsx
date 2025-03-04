@@ -30,9 +30,9 @@ const ReviewRate = () => {
                  spaceBetween={0}
                  slidesPerView={1}
                  onSwiper={(swiper) => (swiperRef.current = swiper)}
-                //  loop={true}
-                //  autoplay={{ delay: 3000, disableOnInteraction: false }}
-                //  speed={900}
+                 loop={true}
+                 autoplay={{ delay: 4000, disableOnInteraction: false }}
+                 speed={900}
                  pagination={{ clickable: true, el: ".custom-pagination" }} // Chỉ định phần tử pagination bên ngoài
             >
                 {ListReviews.map((item, index) => (

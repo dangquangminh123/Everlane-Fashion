@@ -28,6 +28,10 @@ const Favorites = () => {
     const totalItems = ListFavorites.length;
     const totalSlides = Math.ceil(totalItems / visibleItems);
     const [currentIndex, setCurrentIndex] = useState(0);
+
+    const speed = 1000; // Thời gian chuyển động (ms)
+    const delay = 4000; // Độ trễ giữa mỗi lần chuyển đổi (ms)
+  
     // Next button - trượt sang phải
     const slideNext = () => {
         setCurrentIndex((prev) => (prev + 1 < totalSlides ? prev + 1 : 0)); // Quay lại slide đầu nếu hết
@@ -38,6 +42,15 @@ const Favorites = () => {
         setCurrentIndex((prev) => (prev - 1 >= 0 ? prev - 1 : totalSlides - 1)); // Quay lại slide cuối nếu đang ở đầu
     };
 
+    // 🔥 Tự động chuyển slide mỗi 4 giây
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            slideNext();
+        }, delay);
+
+        return () => clearTimeout(timer); // Dọn dẹp khi component unmount hoặc index thay đổi
+    }, [currentIndex]); // Gọi lại mỗi khi currentIndex thay đổi
+   
     return (
         <div className="Favorites">
             <div className="FavoritesHeader">
@@ -55,7 +68,7 @@ const Favorites = () => {
                         className="ListFavorites"
                         style={{
                             transform: `translateX(-${currentIndex * 100}%)`, // Tránh dư thừa
-                            transition: "transform 0.5s ease",
+                            transition: `transform ${speed}ms ease`,
                             display: "flex",
                             width: `${totalSlides * 100}%`, // Đảm bảo không tràn ra ngoài
                         }}

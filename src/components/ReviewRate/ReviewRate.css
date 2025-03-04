@@ -68,7 +68,7 @@
     font-size: 1.2em;
     font-weight: 300;
     text-transform: capitalize;
-    color: #000000;
+    color: var(--background-black);
 }
 
 .ReviewsBody .DetailsReviews .GeneraReview {
@@ -129,7 +129,7 @@
 
 .Reviews .ReviewFooter {
     margin-top: 6em;
-    border: 0.09em solid #dddd;
+    border: 0.09em solid var(--border-bottom-line);
     margin-left: 5em;
     margin-right: 5em;
 }
@@ -147,12 +147,12 @@
 .custom-pagination .swiper-pagination-bullet {
     width: 10px;
     height: 10px;
-    background: gray;
+    background: var(--color-type);
     opacity: 0.5;
     transition: all 0.3s ease;
 }
 
 .custom-pagination .swiper-pagination-bullet-active {
-    background: black;
+    background: var(--background-black);
     opacity: 1;
 }
