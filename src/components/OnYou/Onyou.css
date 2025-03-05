@@ -49,7 +49,6 @@
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 0 1.4em; 
     width: 100%;
     overflow: hidden;
 }
@@ -62,27 +61,23 @@
 
 .OnYouBox .OnYouBody .SlidesOnYou {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     flex: 0 0 100%;
-    margin: 0 1em;
     width: 100%;
     flex-wrap: nowrap;
 }
 
 .OnYouBox .OnYouBody .SlidesOnYou .ItemsOnYou {
     max-width: 100%;
+    width: 18em;
     display: flex;
     align-items: center;
-    margin: 0 0.5em;
     overflow: hidden;
     position: relative;
     z-index: 1;
 }
 
-.OnYouBox .OnYouBody .SlidesOnYou .ItemsOnYou:last-child {
-    margin-right: 3em;
-}
 
 .OnYouBody .SlidesOnYou .ItemsOnYou .OnYouImages {
     width: 18em;

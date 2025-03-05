@@ -39,7 +39,7 @@ const Banner = () => {
         slidesToShow: 1,
         slidesToScroll: 1,
         autoplay: true,
-        arrows: true,
+        // arrows: true,
         autoplaySpeed: 1200,
     }
 

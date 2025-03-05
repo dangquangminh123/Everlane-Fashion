@@ -28,30 +28,46 @@ const ListItemOnYou = [
 
 
 const Onyou = () => {
-
-  const visibleItems = 5; // Số lượng item hiển thị mỗi lần
-  const totalItems = ListItemOnYou.length;
-  const totalSlides = Math.ceil(totalItems / visibleItems);
+  const sliderRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const itemWidth = 18; // Đơn vị em
+  const gap = 1;
+  const visibleItems = 5;
+  const totalItems = ListItemOnYou.length;
+  const autoScrollInterval = 3000; 
+  let autoScrollRef = useRef(null);
 
-  const speed = 1000; // Thời gian chuyển động (ms)
-  const delay = 4000; // Độ trễ giữa mỗi lần chuyển đổi (ms)
-
-  const slideNext = () => {
-      setCurrentIndex((prev) => (prev + 1 < totalSlides ? prev + 1 : 0)); // Quay lại slide đầu nếu hết
+  const handleNext = () => {
+    setCurrentIndex(prevIndex => (prevIndex >= totalItems - visibleItems ? 0 : prevIndex + 1));
   };
 
-  const slidePrev = () => {
-      setCurrentIndex((prev) => (prev - 1 >= 0 ? prev - 1 : totalSlides - 1)); // Quay lại slide cuối nếu đang ở đầu
+  const handlePrev = () => {
+    setCurrentIndex(prevIndex => (prevIndex <= 0 ? totalItems - visibleItems : prevIndex - 1));
   };
 
-  useEffect(() => {
-      const timer = setTimeout(() => {
-          slideNext();
-      }, delay);
+   // Tự động chạy
+   useEffect(() => {
+    const startAutoScroll = () => {
+      if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+      autoScrollRef.current = setInterval(handleNext, autoScrollInterval);
+    };
 
-      return () => clearTimeout(timer); 
-  }, [currentIndex]); 
+    startAutoScroll(); // Khởi động auto-scroll
+
+    // Dừng khi hover
+    const stopAutoScroll = () => {
+      if (autoScrollRef.current) clearInterval(autoScrollRef.current);
+    };
+
+    sliderRef.current?.addEventListener("mouseenter", stopAutoScroll);
+    sliderRef.current?.addEventListener("mouseleave", startAutoScroll);
+
+    return () => {
+      clearInterval(autoScrollRef.current);
+      sliderRef.current?.removeEventListener("mouseenter", stopAutoScroll);
+      sliderRef.current?.removeEventListener("mouseleave", startAutoScroll);
+    };
+  }, []);
 
   return (
     <>
@@ -64,34 +80,36 @@ const Onyou = () => {
             </div>
         </div>
         <div className="OnYouBody">
-            <button className="OnYPreBtn" onClick={slidePrev}>
+            <button className="OnYPreBtn" onClick={handlePrev}>
                 <MdOutlineArrowBackIosNew />
             </button>
-            <div className="SwiperContainer">
-                {Array.from({ length: totalSlides }).map((_, slideIndex) => (
-                  <div 
-                      className="SlidesOnYou"
-                      style={{
-                        transform: `translateX(-${currentIndex * 100}%)`, // Tránh dư thừa
-                        transition: `transform ${speed}ms ease`,
-                        display: "flex",
-                        width: `${totalSlides * 100}%`, // Đảm bảo không tràn ra ngoài
-                      }}>
-                      {ListItemOnYou.slice(slideIndex * visibleItems, (slideIndex + 1) * visibleItems).map((item) => (
-                          <div className="ItemsOnYou">
-                              <div className="OnYouImages">
-                                <img src={item.img} alt=''/>
-                              </div>
-                              <div className="CartOnYou">
-                                <LuShoppingCart />
-                              </div>
+              <div className="SwiperContainer" ref={sliderRef} style={{ 
+                    overflow: "hidden", 
+                    width: `${(itemWidth + gap) * visibleItems}em`
+                }}>
+                        <div className="SlidesOnYou" style={{
+                            display: "flex",
+                            transition: "transform 0.3s ease-in-out",
+                            transform: `translateX(-${currentIndex * (itemWidth + gap)}em)`
+                        }}>
+                         {ListItemOnYou.map((item, index) => (
+                            <div className="ItemsOnYou" key={index} style={{
+                                flex: "0 0 auto",
+                                width: `${itemWidth}em`,
+                                marginRight: `${gap}em`
+                            }}>
+                                <div className="OnYouImages">
+                                    <img src={item.img} style={{ width: "100%", height: "auto" }} />
+                                </div>
+                                <div className="CartOnYou">
+                                    <LuShoppingCart />
+                                </div>
+                            </div>
+                        ))}
                           </div>
-                      ))}
-                  </div>
-                ))}
-            </div>
+              </div>
 
-            <button className="OnYNextBtn" onClick={slideNext}>
+            <button className="OnYNextBtn" onClick={handleNext}>
                 <MdOutlineArrowForwardIos />
             </button>
         </div>
