@@ -1,0 +1,144 @@
+.OnYouBox {
+    margin: 2.1em 1.4em 0em 1.4em;
+    position: relative;
+}
+
+.OnYouBox .OnYouHead {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.OnYouHead .OnYouTitle {
+    margin: 0em;
+    color: #262626;
+    font-weight: 250;
+    text-align: justify;
+    letter-spacing: 0.05em;
+}
+
+.OnYouHead .IntroduceOnYou {
+    margin-top: 1em;
+    text-align: center;
+}
+
+.OnYouHead .IntroduceOnYou .OnYouDescription {
+    text-align: justify;
+    letter-spacing: 0.05em;
+    font-size: 1.1em;
+    font-weight: 250;
+}
+
+.OnYouHead .IntroduceOnYou  .OnYourAdd {
+    text-transform: capitalize;
+    font-size: 1em;
+    text-decoration: underline;
+    letter-spacing: 0.09em;
+    font-weight: 300;
+}
+
+.OnYouBox .OnYouBody {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.4em 0em;
+}
+
+.OnYouBox .OnYouBody .SwiperContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 1.4em; 
+    width: 100%;
+    overflow: hidden;
+}
+
+.OnYouBox .OnYouBody .swiper-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* Căn giữa thủ công */
+    transition: transform 0.3s ease-in-out;
+}
+
+.OnYouBox .OnYouBody .SlidesOnYou {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 0 0 100%;
+    margin: 0 1em;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.OnYouBox .OnYouBody .SlidesOnYou .ItemsOnYou {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    margin: 0 0.5em;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.OnYouBox .OnYouBody .SlidesOnYou .ItemsOnYou:last-child {
+    margin-right: 3em;
+}
+
+.OnYouBody .SlidesOnYou .ItemsOnYou .OnYouImages {
+    width: 18em;
+    height: 18em;
+}
+
+.OnYouBody .SlidesOnYou .ItemsOnYou .CartOnYou {
+    position: absolute;
+    background: #ffffff;
+    display: block;
+    width: 1.7em;
+    height: 1.8em;
+    top: 3%;
+    right: 2%;
+    line-height: 1.6em;
+    text-align: center;
+    border-radius: 58%;
+}
+
+.OnYouBody .SlidesOnYou .ItemsOnYou .CartOnYou svg {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.SlidesOnYou .ItemsOnYou .OnYouImages img {
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.OnYouBox .OnYouBody .OnYPreBtn,
+.OnYouBox .OnYouBody .OnYNextBtn {
+    position: absolute;
+    top: 70%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.5em;
+    cursor: pointer;
+    z-index: 10; 
+    transition: all 0.3s ease-in;
+}
+
+.OnYouBox .OnYouBody .OnYPreBtn:hover,
+.OnYouBox .OnYouBody .OnYNextBtn:hover {
+    background: var(--text-button-hover);
+    color: var(--color-button-nextprev);
+    border-radius: 38%;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.OnYouBox .OnYouBody .OnYPreBtn {
+    left: 0%;
+}
+
+.OnYouBox .OnYouBody .OnYNextBtn {
+    right: 0%;
+}
