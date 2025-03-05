@@ -12,7 +12,7 @@
 
 .OnYouHead .OnYouTitle {
     margin: 0em;
-    color: #262626;
+    color: var(--text-color);
     font-weight: 250;
     text-align: justify;
     letter-spacing: 0.05em;
@@ -86,7 +86,7 @@
 
 .OnYouBody .SlidesOnYou .ItemsOnYou .CartOnYou {
     position: absolute;
-    background: #ffffff;
+    background: var(--text-white);
     display: block;
     width: 1.7em;
     height: 1.8em;
@@ -111,7 +111,7 @@
 .OnYouBox .OnYouBody .OnYPreBtn,
 .OnYouBox .OnYouBody .OnYNextBtn {
     position: absolute;
-    top: 70%;
+    top: 40%;
     transform: translateY(-50%);
     background: none;
     border: none;
@@ -136,4 +136,49 @@
 
 .OnYouBox .OnYouBody .OnYNextBtn {
     right: 0%;
+}
+
+
+/* OurServices */
+
+.OurServices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6em 3em;
+}
+
+.OurServices .ItemsOurServices {
+    margin: 0em 2em;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.OurServices .ItemsOurServices .ImagesServices {
+    display: block;
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+.OurServices .ItemsOurServices .ImagesServices svg {
+    font-size: 4.5em;
+}
+
+.OurServices .ItemsOurServices .TitleServices {
+    color: var(--text-color);
+    font-weight: 500;
+    font-size: 1em;
+    margin-bottom: 0.5em;
+}
+
+.OurServices .ItemsOurServices .ContentServices {
+    color: var(--text-color);
+    display: block;
+    width: 53%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    line-height: 1.4em;
+    font-weight: 300;
 }

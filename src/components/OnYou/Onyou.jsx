@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import './Onyou.css'
+import { Container, Row, Col } from 'react-bootstrap'
 import { HiMiniArrowPathRoundedSquare } from "react-icons/hi2";
 import { TfiPackage } from "react-icons/tfi";
 import { RiMapPinLine } from "react-icons/ri";
@@ -11,6 +11,11 @@ import onyou2 from '../../assets/OnYour/Onyou2.png'
 import onyou3 from '../../assets/OnYour/Onyou3.png'
 import onyou4 from '../../assets/OnYour/Onyou4.png'
 import onyou5 from '../../assets/OnYour/Onyou5.png'
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import './Onyou.css'
+
+gsap.registerPlugin(ScrollTrigger);
 
 
 const ListItemOnYou = [
@@ -27,8 +32,11 @@ const ListItemOnYou = [
 ];
 
 
+
 const Onyou = () => {
   const sliderRef = useRef(null);
+  const itemsRef = useRef([]);
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemWidth = 18; // Đơn vị em
   const gap = 1;
@@ -45,8 +53,90 @@ const Onyou = () => {
     setCurrentIndex(prevIndex => (prevIndex <= 0 ? totalItems - visibleItems : prevIndex - 1));
   };
 
+
    // Tự động chạy
    useEffect(() => {
+        // Animation theo thứ tự: OnYouTitle -> OnYouDescription -> OnYourAdd
+        const tl = gsap.timeline({ delay: 0.5 });
+            tl.from(".OnYouTitle", {
+              opacity: 0,
+              y: -50,
+              duration: 1,
+              ease: "power3.out",
+            })
+              .from(".OnYouDescription", {
+                opacity: 0,
+                y: -30,
+                duration: 1,
+                ease: "power3.out",
+              })
+              .from(".OnYourAdd", {
+                opacity: 0,
+                scale: 0.5,
+                rotation: 10,
+                duration: 1,
+                ease: "elastic.out(1, 0.5)", // Hiệu ứng kiểu "Barely Broke a Sweat"
+              });
+
+            // Animation cho slide khi scroll
+            gsap.fromTo(
+              ".SlidesOnYou",
+              { x: "100%", opacity: 0 },
+              {
+                x: "0%",
+                opacity: 1,
+                duration: 1.5,
+                ease: "power3.out",
+                scrollTrigger: {
+                  trigger: ".SwiperContainer",
+                  start: "top 80%",
+                  toggleActions: "play none none none",
+                },
+              }
+            );
+      // Animation cho slide
+      gsap.fromTo(
+        ".SlidesOnYou",
+        { x: "100%", opacity: 0 },
+        {
+          x: "0%",
+          opacity: 1,
+          duration: 1.5,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: ".SwiperContainer",
+            start: "top 80%",
+            toggleActions: "play none none none",
+          },
+        }
+      );
+      itemsRef.current.forEach((item, index) => {
+        if (item) {
+          const tl = gsap.timeline({ delay: index * 0.2 });
+  
+          // Animation cho hình ảnh
+          tl.from(item.querySelector(".OnYouImages img"), {
+            opacity: 0,
+            scale: index % 2 === 0 ? 0.5 : 1.2,
+            rotate: index % 3 === 0 ? -10 : 10,
+            duration: 1,
+            ease: "power3.out",
+          });
+  
+          // Animation cho Cart Icon
+          tl.from(
+            item.querySelector(".CartOnYou"),
+            {
+              opacity: 0,
+              y: index % 2 === 0 ? 20 : -20,
+              scale: index % 3 === 0 ? 0.8 : 1.2,
+              duration: 1,
+              ease: "elastic.out(1, 0.5)",
+            },
+            "-=0.5"
+          );
+        }
+      });
     const startAutoScroll = () => {
       if (autoScrollRef.current) clearInterval(autoScrollRef.current);
       autoScrollRef.current = setInterval(handleNext, autoScrollInterval);
@@ -67,7 +157,10 @@ const Onyou = () => {
       sliderRef.current?.removeEventListener("mouseenter", stopAutoScroll);
       sliderRef.current?.removeEventListener("mouseleave", startAutoScroll);
     };
+
+   
   }, []);
+
 
   return (
     <>
@@ -89,11 +182,12 @@ const Onyou = () => {
                 }}>
                         <div className="SlidesOnYou" style={{
                             display: "flex",
-                            transition: "transform 0.3s ease-in-out",
+                            transition: "transform 0.5s ease-in-out",
                             transform: `translateX(-${currentIndex * (itemWidth + gap)}em)`
                         }}>
                          {ListItemOnYou.map((item, index) => (
-                            <div className="ItemsOnYou" key={index} style={{
+                            <div className="ItemsOnYou" key={index} ref={(el) => (itemsRef.current[index] = el)}
+                             style={{
                                 flex: "0 0 auto",
                                 width: `${itemWidth}em`,
                                 marginRight: `${gap}em`
@@ -112,6 +206,37 @@ const Onyou = () => {
             <button className="OnYNextBtn" onClick={handleNext}>
                 <MdOutlineArrowForwardIos />
             </button>
+        </div>
+
+        <div className="OurServices">
+          <Col xs={12} md={4}>
+            <div className="ItemsOurServices">
+                <div className="ImagesServices">
+                    <TfiPackage />
+                </div>
+                <span className="TitleServices">Complimentary Shipping</span>
+                <p className="ContentServices">Enjoy free shipping on U.S. orders over $100.</p>
+            </div>
+          </Col>
+          <Col xs={12} md={4}>
+            <div className="ItemsOurServices">
+                  <div className="ImagesServices">
+                      <HiMiniArrowPathRoundedSquare />
+                  </div>
+                  <span className="TitleServices">Consciously Crafted</span>
+                  <p className="ContentServices">Designed with you and the planet in mind.</p>
+            </div>
+          </Col>
+          
+          <Col xs={12} md={4}>
+            <div className="ItemsOurServices">
+                <div className="ImagesServices">
+                    <RiMapPinLine />
+                </div>
+                <span className="TitleServices">Come Say Hi</span>
+                <p className="ContentServices">We have 11 stores across the U.S.</p>
+            </div>
+          </Col>
         </div>
       </div>
     </>
