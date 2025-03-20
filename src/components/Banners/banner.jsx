@@ -19,7 +19,6 @@ const banners = [
     { img: Banner3, title: "Beauty store", desc: "The exterior beauty of the shop in the middle of the lane", button: "Shop now" },
     { img: Banner4, title: "Style how to style winter whites", desc: "Redefine your winter wardrobe with the timeless elegance of winter whites with this style guide.", button: "Explore now" },
     { img: Banner5, title: "SEATTLE University Village", desc: "The current prominent shoe styles of the young generation", button: "Explore now" }
-
 ];
 
 const Banner = () => {

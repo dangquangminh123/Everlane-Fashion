@@ -1,0 +1,130 @@
+.FooterBox {
+    margin-top: 1em;
+    background: var(--background-gray);
+    padding: 2em 4em;
+}
+
+.FooterBox .FooterBody {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.FooterBody .TopicFooter {
+    color: var(--color-bottom-line);
+    font-weight: 500;
+    font-size: 1.2em;
+    text-align: left;
+    text-transform: capitalize;
+}
+
+.FooterBody .listCompany {
+    margin: 1.4em 0 0 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.FooterBody .listCompany .ItemCompany {
+    margin-bottom: 0.8em;
+}
+
+.FooterBody .listCompany .ItemCompany .DetailItems {
+    text-decoration: none;
+    text-align: left;
+    text-transform: capitalize;
+    font-weight: 300;
+    font-size: 1em;
+    color: var(--color-type);
+    letter-spacing: 0.1em;
+    transition: all 0.4s ease-in-out;
+}
+
+.FooterBody .listCompany .ItemCompany .DetailItems:hover {
+    color: var(--text-button-hover);
+    font-weight: 400;
+}
+
+.FooterBody .EmailContact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.FooterBody .EmailContact .FormContact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.FooterBody .EmailContact .EmailInput {
+    width: 20em;
+    object-fit: cover;
+    height: 3.5em;
+    outline: none;
+    background: none;
+    font-size: 1em;
+    padding: 1em 1.4em;
+    border: 1px solid var(--color-type);
+}
+
+
+.FooterBody .EmailContact .EmailBtn {
+    width: 3.5em;
+    object-fit: cover;
+    height: 3.6em;
+    outline: none;
+    line-height: 1.1;
+    background: var(--background-black);
+    border: 1px solid var(--color-type);
+    border-left: none;
+    cursor: pointer;
+    transition: all 0.4s ease-in-out;
+}
+
+.FooterBody .EmailContact .EmailBtn:hover {
+    background: var(--text-color-hover);
+    border: var(--button-background-color);
+}
+
+.FooterBody .EmailContact .EmailBtn svg {
+    font-size: 1.6em;
+    font-weight: 500;
+    color: var(--text-white);
+}
+
+/* Content dưới cùng */
+
+.FooterBox .FooterContent{
+    margin: 2em 4.5em;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.FooterBox .FooterContent .listContent {
+    display: flex;
+    width: 100%;
+    text-transform: capitalize;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1em;
+    color: var(--color-type);
+    list-style: none;
+    margin: 0;
+}
+
+.FooterBox .FooterContent .coppy_right {
+    margin-top: 1.5em;
+    font-size: 1em;
+    text-transform: capitalize;
+    text-align: left;
+    color: var(--color-type);
+    letter-spacing: 0.1em;
+}
+
+/* End Content dưới cùng */

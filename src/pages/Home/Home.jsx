@@ -6,6 +6,7 @@ import Favorites from '../../components/Favorites/Favorites'
 import ReviewRate from '../../components/ReviewRate/ReviewRate'
 import Postpopular from '../../components/PopularPost/Postpopular'
 import Onyou from '../../components/OnYou/Onyou'
+import Footer from '../../components/Footer/Footer'
 const Home = () => {
   return (
     <>
@@ -16,6 +17,7 @@ const Home = () => {
         <ReviewRate />
         <Postpopular />
         <Onyou />
+        <Footer />
     </>
   )
 }

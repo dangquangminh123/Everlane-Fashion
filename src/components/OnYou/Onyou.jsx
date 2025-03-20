@@ -12,6 +12,7 @@ import onyou3 from '../../assets/OnYour/Onyou3.png'
 import onyou4 from '../../assets/OnYour/Onyou4.png'
 import onyou5 from '../../assets/OnYour/Onyou5.png'
 import gsap from "gsap";
+import { motion } from "framer-motion";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import './Onyou.css'
 
@@ -31,6 +32,23 @@ const ListItemOnYou = [
   { id: 10, img: onyou5 },
 ];
 
+const serviceData = [
+  {
+    icon: <TfiPackage />,
+    title: "Complimentary Shipping",
+    content: "Enjoy free shipping on U.S. orders over $100.",
+  },
+  {
+    icon: <HiMiniArrowPathRoundedSquare />,
+    title: "Consciously Crafted",
+    content: "Designed with you and the planet in mind.",
+  },
+  {
+    icon: <RiMapPinLine />,
+    title: "Come Say Hi",
+    content: "We have 11 stores across the U.S.",
+  },
+];
 
 
 const Onyou = () => {
@@ -43,7 +61,7 @@ const Onyou = () => {
   const visibleItems = 5;
   const totalItems = ListItemOnYou.length;
   const autoScrollInterval = 3000; 
-  let autoScrollRef = useRef(null);
+  const autoScrollRef = useRef(null);
 
   const handleNext = () => {
     setCurrentIndex(prevIndex => (prevIndex >= totalItems - visibleItems ? 0 : prevIndex + 1));
@@ -56,87 +74,90 @@ const Onyou = () => {
 
    // Tự động chạy
    useEffect(() => {
-        // Animation theo thứ tự: OnYouTitle -> OnYouDescription -> OnYourAdd
-        const tl = gsap.timeline({ delay: 0.5 });
-            tl.from(".OnYouTitle", {
-              opacity: 0,
-              y: -50,
-              duration: 1,
-              ease: "power3.out",
-            })
-              .from(".OnYouDescription", {
-                opacity: 0,
-                y: -30,
-                duration: 1,
-                ease: "power3.out",
-              })
-              .from(".OnYourAdd", {
-                opacity: 0,
-                scale: 0.5,
-                rotation: 10,
-                duration: 1,
-                ease: "elastic.out(1, 0.5)", // Hiệu ứng kiểu "Barely Broke a Sweat"
-              });
+    const ctx = gsap.context(() => {
+      if (!sliderRef.current) return;
 
-            // Animation cho slide khi scroll
-            gsap.fromTo(
-              ".SlidesOnYou",
-              { x: "100%", opacity: 0 },
-              {
-                x: "0%",
-                opacity: 1,
-                duration: 1.5,
-                ease: "power3.out",
-                scrollTrigger: {
-                  trigger: ".SwiperContainer",
-                  start: "top 80%",
-                  toggleActions: "play none none none",
-                },
-              }
-            );
-      // Animation cho slide
-      gsap.fromTo(
-        ".SlidesOnYou",
-        { x: "100%", opacity: 0 },
-        {
-          x: "0%",
-          opacity: 1,
-          duration: 1.5,
+      ScrollTrigger.create({
+        trigger: sliderRef.current,
+        start: "top 80%", // Kích hoạt khi component cuộn đến 80% chiều cao màn hình
+        onEnter: () => startAnimations(), // Chỉ chạy animation khi vào viewport
+      });
+
+      const startAnimations = () => {
+        // Animation tiêu đề & mô tả
+        const tl = gsap.timeline({ delay: 0.5 });
+        tl.from(".OnYouTitle", {
+          opacity: 0,
+          y: -50,
+          duration: 1,
           ease: "power3.out",
-          scrollTrigger: {
-            trigger: ".SwiperContainer",
-            start: "top 80%",
-            toggleActions: "play none none none",
-          },
-        }
-      );
-      itemsRef.current.forEach((item, index) => {
-        if (item) {
-          const tl = gsap.timeline({ delay: index * 0.2 });
-  
-          // Animation cho hình ảnh
-          tl.from(item.querySelector(".OnYouImages img"), {
+        })
+          .from(".OnYouDescription", {
             opacity: 0,
-            scale: index % 2 === 0 ? 0.5 : 1.2,
-            rotate: index % 3 === 0 ? -10 : 10,
+            y: -30,
             duration: 1,
             ease: "power3.out",
+          })
+          .from(".OnYourAdd", {
+            opacity: 0,
+            scale: 0.5,
+            rotation: 10,
+            duration: 1,
+            ease: "elastic.out(1, 0.5)",
           });
-  
-          // Animation cho Cart Icon
-          tl.from(
-            item.querySelector(".CartOnYou"),
-            {
-              opacity: 0,
-              y: index % 2 === 0 ? 20 : -20,
-              scale: index % 3 === 0 ? 0.8 : 1.2,
-              duration: 1,
-              ease: "elastic.out(1, 0.5)",
+
+        // Animation tổng thể cho slide
+        gsap.fromTo(
+          ".SlidesOnYou",
+          { x: "100%", opacity: 0 },
+          {
+            x: "0%",
+            opacity: 1,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: ".SwiperContainer",
+              start: "top 80%",
+              toggleActions: "play none none none",
             },
-            "-=0.5"
-          );
-        }
-      });
+          }
+        );
+
+        // Animation từng item khác nhau
+        itemsRef.current.forEach((item, index) => {
+          if (item) {
+            const tl = gsap.timeline({ delay: index * 0.2 });
+
+            // Animation cho hình ảnh
+            tl.from(item.querySelector(".OnYouImages img"), {
+              opacity: 0,
+              scale: index % 2 === 0 ? 0.5 : 1.2,
+              rotate: index % 3 === 0 ? -10 : 10,
+              duration: 1,
+              ease: "power3.out",
+            });
+
+            // Animation cho Cart Icon
+            tl.from(
+              item.querySelector(".CartOnYou"),
+              {
+                opacity: 0,
+                y: index % 2 === 0 ? 20 : -20,
+                scale: index % 3 === 0 ? 0.8 : 1.2,
+                duration: 1,
+                ease: "elastic.out(1, 0.5)",
+              },
+              "-=0.5"
+            );
+          }
+        });
+
+        // Bắt đầu auto-scroll khi animation hoàn tất
+        startAutoScroll();
+      };
+    }, sliderRef);
+
+
     const startAutoScroll = () => {
       if (autoScrollRef.current) clearInterval(autoScrollRef.current);
       autoScrollRef.current = setInterval(handleNext, autoScrollInterval);
@@ -156,6 +177,7 @@ const Onyou = () => {
       clearInterval(autoScrollRef.current);
       sliderRef.current?.removeEventListener("mouseenter", stopAutoScroll);
       sliderRef.current?.removeEventListener("mouseleave", startAutoScroll);
+      ctx.revert(); // Cleanup GSAP animations
     };
 
    
@@ -209,34 +231,26 @@ const Onyou = () => {
         </div>
 
         <div className="OurServices">
-          <Col xs={12} md={4}>
-            <div className="ItemsOurServices">
-                <div className="ImagesServices">
-                    <TfiPackage />
-                </div>
-                <span className="TitleServices">Complimentary Shipping</span>
-                <p className="ContentServices">Enjoy free shipping on U.S. orders over $100.</p>
-            </div>
-          </Col>
-          <Col xs={12} md={4}>
-            <div className="ItemsOurServices">
-                  <div className="ImagesServices">
-                      <HiMiniArrowPathRoundedSquare />
-                  </div>
-                  <span className="TitleServices">Consciously Crafted</span>
-                  <p className="ContentServices">Designed with you and the planet in mind.</p>
-            </div>
-          </Col>
-          
-          <Col xs={12} md={4}>
-            <div className="ItemsOurServices">
-                <div className="ImagesServices">
-                    <RiMapPinLine />
-                </div>
-                <span className="TitleServices">Come Say Hi</span>
-                <p className="ContentServices">We have 11 stores across the U.S.</p>
-            </div>
-          </Col>
+          {serviceData.map((service, index) => (
+            <Col xs={12} md={4} key={index}>
+              <motion.div
+                className="ItemsOurServices"
+                initial={{ opacity: 0, y: 50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                whileHover={{ scale: 1.05 }}
+              >
+                <motion.div
+                  className="ImagesServices"
+                  whileHover={{ rotate: 10, scale: 1.2 }}
+                >
+                  {service.icon}
+                </motion.div>
+                <span className="TitleServices">{service.title}</span>
+                <p className="ContentServices">{service.content}</p>
+              </motion.div>
+            </Col>
+          ))}
         </div>
       </div>
     </>

@@ -57,6 +57,7 @@
 
 :root {
     --background-black: #000000;
+    --background-gray: #F5F4F4;
     --background-white: #ffff;
     --text-color: #262626;
     --text-color-hover: #D0021B;

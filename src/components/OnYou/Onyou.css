@@ -95,11 +95,22 @@
     line-height: 1.6em;
     text-align: center;
     border-radius: 58%;
+    transition: all 0.4s ease-in;
+
 }
 
 .OnYouBody .SlidesOnYou .ItemsOnYou .CartOnYou svg {
     font-size: 1em;
     font-weight: 300;
+    cursor: pointer;
+    transition: all 0.4s ease-in;
+}
+
+.OnYouBody .SlidesOnYou .ItemsOnYou .CartOnYou:hover,
+.OnYouBody .SlidesOnYou .ItemsOnYou .CartOnYou:hover svg {
+    color: var(--text-button-hover);
+    font-weight: 400;
+    background: transparent;
 }
 
 .SlidesOnYou .ItemsOnYou .OnYouImages img {
@@ -164,7 +175,13 @@
 
 .OurServices .ItemsOurServices .ImagesServices svg {
     font-size: 4.5em;
+    transition: all 0.5s ease-in-out;
 }
+
+.OurServices .ItemsOurServices .ImagesServices:hover svg {
+    color: var(--text-button-hover);
+}
+
 
 .OurServices .ItemsOurServices .TitleServices {
     color: var(--text-color);
