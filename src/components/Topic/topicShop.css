@@ -68,7 +68,7 @@
     background: var(--background-white); /* Màu nền ban đầu */
     color: var(--text-title);            /* Màu chữ ban đầu */
     overflow: hidden;                    /* Ẩn phần hiệu ứng tràn ra ngoài */
-    transition: color 3s ease-in-out;           /* Chuyển màu chữ từ từ trong 5 giây */
+    transition: color 1s ease-in-out;           /* Chuyển màu chữ từ từ trong 5 giây */
     z-index: 1;      
 }
 
@@ -82,7 +82,7 @@
     height: 100%;                      /* Chiếm toàn bộ chiều cao của nút */
     background: var(--gradient-background-button); /* Gradient hồng thời trang */
     transform: translateX(-50%);       /* Căn giữa theo trục ngang */
-    transition: width 3s ease-in-out;         /* Hiệu ứng mở rộng từ từ trong 5 giây */
+    transition: width 1s ease-in-out;         /* Hiệu ứng mở rộng từ từ trong 5 giây */
     z-index: -1; /* đảm bảo rằng chữ không bị che đi */
 }
 
@@ -94,7 +94,7 @@
 
 /* Khi bỏ hover, nền biến mất ngay */
 .ItemTopic .InfoTopic .TopicBtn:not(:hover)::before {
-    transition: width 0.4s ease-in-out;
+    transition: width 0.2s ease-in-out;
     width: 0;
 }
 
@@ -115,11 +115,11 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 2s ease-in-out;
+    transition: transform 1s ease-in-out;
 }
 
 .ExtraTopic:hover img {
-    animation: sphereFall 2.5s ease-in-out forwards;
+    animation: sphereFall 1s ease-in-out forwards;
 }
 
 

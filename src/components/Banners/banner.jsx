@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect }  from 'react';
+import { motion } from 'framer-motion';
 import Banner1 from '../../assets/banner/banner1.png'
 import Banner2 from '../../assets/banner/banner2.jpg'
 import Banner3 from '../../assets/banner/banner3.jpg'
@@ -49,39 +50,65 @@ const Banner = () => {
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
         >
-           <button 
-                className={`PrevBtn ${isHovered ? "show" : ""}`} 
+             <motion.button
+                className={`PrevBtn ${isHovered ? "show" : ""}`}
                 onClick={() => sliderRef.current?.slickPrev()}
+                initial={{ opacity: 0, x: -50 }}
+                animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : -50 }}
+                transition={{ duration: 0.3 }}
+                whileTap={{ scale: 0.9 }}
             >
                 <GrLinkPrevious />
-            </button>
-            <Slider ref={sliderRef} {...settings} className="BannerBody">
+            </motion.button>
+
+             <Slider ref={sliderRef} {...settings} className="BannerBody">
                 {banners.map((item, index) => (
-                <div key={index} className="slick-slide">
-                    <img src={item.img} alt="Banner Images" />
-                    <Container> 
-                        <Row className='InfoImagesSlider'>
-                            <div className="TitleSlider">
-                                <h2 className="TitleName">{item.title}</h2>
-                            </div>
-                            <div className="DescriptionsTitle">
-                                <p className="DetailDesc">{item.desc}</p>
-                            </div>
-                            <div className="BtnSlider">
-                                <Link to="" className="BtnDonateSlider">{item.button}</Link>
-                                <Link to="" className="BtnMoreSlider">Know More</Link>
-                            </div>
-                        </Row>
-                    </Container>
-                </div>
+                    <div key={index} className="slick-slide">
+                        <img src={item.img} alt="Banner Images" />
+                        <Container>
+                            <Row className='InfoImagesSlider'>
+                                <motion.div 
+                                    className="TitleSlider"
+                                    initial={{ opacity: 0, y: -20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.3, duration: 0.6 }}
+                                >
+                                    <h2 className="TitleName">{item.title}</h2>
+                                </motion.div>
+                                <motion.div 
+                                    className="DescriptionsTitle"
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ delay: 0.5, duration: 0.6 }}
+                                >
+                                    <p className="DetailDesc">{item.desc}</p>
+                                </motion.div>
+                                <motion.div 
+                                    className="BtnSlider"
+                                    initial={{ opacity: 0, scale: 0.8 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    transition={{ delay: 0.7, duration: 0.5 }}
+                                >
+                                    <motion.div whileHover={{ scale: 1.1 }} whileTap={{ scale: 0.9 }}>
+                                        <Link to="" className="BtnDonateSlider">{item.button}</Link>
+                                         <Link to="" className="BtnMoreSlider">Know More</Link>
+                                    </motion.div>
+                                </motion.div>
+                            </Row>
+                        </Container>
+                    </div>
                 ))}
             </Slider>
-            <button 
-               className={`NextBtn ${isHovered ? "show" : ""}`} 
-               onClick={() => sliderRef.current?.slickNext()} 
+             <motion.button
+                className={`NextBtn ${isHovered ? "show" : ""}`}
+                onClick={() => sliderRef.current?.slickNext()}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: isHovered ? 1 : 0, x: isHovered ? 0 : 50 }}
+                transition={{ duration: 0.3 }}
+                whileTap={{ scale: 0.9 }}
             >
                 <GrLinkNext />
-            </button>
+            </motion.button>
         </div>
     </>
   )

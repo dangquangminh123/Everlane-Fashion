@@ -15,17 +15,17 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
+import Footer from './components/Footer/Footer'
 import Header from "./components/Headers/Headers";
 import Home from "./pages/Home/Home";
-
+import About from './pages/About/About'
 
 const Layout = () =>{
   return (
     <div className='layout-app'>
       <Header />
       <Outlet/>
-      {/* <Footer /> */}
+      <Footer />
     </div>
   )
 }
@@ -41,10 +41,10 @@ function App() {
 
       children: [
         { index: true, element: <Home /> },
-        // {
-        //   path: "contact",
-        //   element: <ContactPage />,
-        // },
+        {
+          path: "about",
+          element: <About />,
+        },
         // {
         //   path: "book/:slug",
         //   element: <BookPage />,
@@ -52,8 +52,8 @@ function App() {
       ],
     },
     // {
-    //   path: "/login",
-    //   element: <Login />,
+    //   path: "/about",
+    //   element: <About />,
     // },
     // {
     //   path: "/register",
