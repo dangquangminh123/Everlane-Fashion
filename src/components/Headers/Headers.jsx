@@ -121,22 +121,12 @@ const Headers = () => {
      
       <div className="Header d-flex justify-content-center">
           <Col xs={12} md={4}>
-            {/* <ul className="menuHeader">
-              {menuItems.map((item, index) => (
-                <li key={item.id} className="itemsMenu">
-                  <Link to={item.subMenu.length > 0 ? "#" : item.link}
-                    className="itemChildrens"
-                    onClick={(e) => handleMenuClick(item.id, e)}>
-                      {item.name}
-                  </Link>
-                </li>
-              ))}
-            </ul> */}
               <ul className="menuHeader">
                 {menuItems.map((item, index) => (
                   <li
                     key={item.id}
                     className="itemsMenu"
+                    onClick={(event) => handleMenuClick(item.id, event)} 
                     ref={(el) => (itemsMenuRef.current[index] = el)}
                   >
                     <Link
