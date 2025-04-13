@@ -1,8 +1,8 @@
 import {
   Outlet, createBrowserRouter,
-  RouterProvider, useNavigate
+  RouterProvider,Navigate
 } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import './styles/reset.css'
 import './styles/global.css'
 import './styles/main.css'
@@ -18,8 +18,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Footer from './components/Footer/Footer'
 import Header from "./components/Headers/Headers";
 import Home from "./pages/Home/Home";
-import About from './pages/About/About'
-
+import About from './pages/About/About';
+import Stores from './pages/Stores/Stores';
+import Everworld from './pages/everWorld/everWorld';
+import DetailEverword from './pages/DetailBlog/detailBlog';
 const Layout = () =>{
   return (
     <div className='layout-app'>
@@ -32,6 +34,15 @@ const Layout = () =>{
 
 function App() {
   const [count, setCount] = useState(0)
+  useEffect(() => {
+    const currentPath = window.location.pathname;
+    
+    // Chỉ redirect nếu: có dấu "/" ở cuối && không phải route "/"
+    if (currentPath !== "/" && currentPath.endsWith("/")) {
+      const newPath = currentPath.slice(0, -1);
+      window.location.replace(newPath);
+    } 
+  }, []);
 
   const router = createBrowserRouter([
     {
@@ -44,21 +55,23 @@ function App() {
         {
           path: "about",
           element: <About />,
+          children: [
+            { index: true, element: <About /> }, // /about
+            { path: "stores", element: <Stores /> },   // /about/stores
+            // { path: "factories", element: <Factories /> } // /about/factories
+          ],
         },
-        // {
-        //   path: "book/:slug",
-        //   element: <BookPage />,
-        // }
+        {
+          path: "everworld",
+          element: <Everworld />,
+        },
+        {
+          path: "detail_blog",
+          element: <DetailEverword />, 
+        },
+        
       ],
     },
-    // {
-    //   path: "/about",
-    //   element: <About />,
-    // },
-    // {
-    //   path: "/register",
-    //   element: <Register />,
-    // },
   ]);
   return (
     <>

@@ -1,0 +1,87 @@
+.StoresBox {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+}
+
+.StoresBox .BoxTitle {
+    margin-top: 7em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.BoxTitle .TitleIntro {
+    text-transform: capitalize;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-title);
+    margin: 1rem 0;
+}
+
+.BoxTitle .findOurStore {
+    word-spacing: 0.09em;
+    text-align: justify;
+    font-size: 1.2rem;
+    text-align: justify;
+    color: var(--text-title);
+}
+
+/* Body */
+
+.StoresBox .StoresBody {
+    max-width: 100%;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 0em 1em;
+}
+
+.StoresBody .Itemstore {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 2em 0em;
+    padding: 0em 1em;
+    height: auto;
+}
+
+.Itemstore .imageStore {
+    width: 100%;
+    height: 100%;    
+}
+
+.Itemstore .imageStore img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.Itemstore .detailStore {
+    margin-top: 0.4em;
+    text-align: left;
+}
+
+.Itemstore .detailStore .cityStore {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    font-weight: 300;
+    color: var(--text-title);
+}
+
+
+.Itemstore .detailStore .addressStore {
+    margin-top: 0.3em;
+    font-size: 1.1rem;
+    font-weight: 350;
+    text-transform: capitalize;
+    color: var(--text-title);
+    transition: all 0.29s ease-in-out;
+}
+
+.Itemstore .detailStore .addressStore:hover {
+    color: var(--text-stores);
+}

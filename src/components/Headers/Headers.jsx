@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Container, Row, Col } from 'react-bootstrap'
+import { useLocation, Link } from "react-router-dom"; 
 import  './Headers.css'
-import { Link } from 'react-router-dom'
 import { FaArrowRight } from "react-icons/fa6";
 import { IoSearch } from "react-icons/io5";
 import { MdOutlinePerson } from "react-icons/md";
@@ -24,14 +24,14 @@ const Headers = () => {
   const detailsItemsRef = useRef([]);
 
   const menuItems = [
-    { id: 1, name: "Woman", link: "/", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
-    { id: 2, name: "Men", link: "/", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
-    { id: 3, name: "About", link: "/", subMenu: ["Stores", "Factories", "Environmental Initiatives", "Our Carbon Commitment", "Annual Impact Report", "Cleaner Fashion"] },
-    { id: 4, name: "Everworld Stories", link: "/", subMenu: [] }
+    { id: 1, name: "Woman", link: "/woman", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
+    { id: 2, name: "Men", link: "/men", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
+    { id: 3, name: "About", link: "/about", subMenu: ["Stores", "Factories", "Environmental Initiatives", "Our Carbon Commitment", "Annual Impact Report", "Cleaner Fashion"] },
+    { id: 4, name: "Everworld Stories", link: "/everworld", subMenu: [] }
   ];
 
   const handleMenuClick = (id, event) => {
-    event.preventDefault(); // Ngăn điều hướng nếu có submenu
+    // event.preventDefault(); // Ngăn điều hướng nếu có submenu
     event.stopPropagation(); // Ngăn sự kiện lan ra ngoài
     setActiveMenu(activeMenu === id ? null : id); // Toggle menu
   };
@@ -106,6 +106,20 @@ const Headers = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
+
+  const currentPath = location.pathname;
+
+  const isMainMenuActive = (item) => {
+    if (item.name === "About" && currentPath.startsWith("/about")) return true;
+    if (item.name === "Woman" && currentPath.startsWith("/woman")) return true;
+    if (item.name === "Men" && currentPath.startsWith("/men")) return true;
+    return false;
+  };
+
+  const isSubMenuActive = (subItem) => {
+    const subPath = subItem.toLowerCase().replace(/\s+/g, "-"); // convert "New Arrivals" => "new-arrivals"
+    return currentPath.includes(subPath);
+  };
   
   return (
     <>
@@ -130,8 +144,9 @@ const Headers = () => {
                     ref={(el) => (itemsMenuRef.current[index] = el)}
                   >
                     <Link
-                      to={item.subMenu.length > 0 ? "#" : item.link}
-                      className="itemChildrens"
+                       to={item.link}
+                      className={`itemChildrens ${isMainMenuActive(item) ? "active" : ""}`}
+                      // onClick={(e) => handleMenuClick(item.id, e)}
                     >
                       {item.name}
                     </Link>
@@ -141,26 +156,13 @@ const Headers = () => {
           </Col>
           <Col xs={12} md={4}>
             <div className="LogoHeader" ref={logoRef}>
-                <img src={logo} alt='' />
+                <Link to={"/"} className="LogoLink">
+                    <img src={logo} alt='' />
+                </Link>
             </div>
           </Col>
           <Col xs={12} md={4}>
             <div className="PersonalHeader d-flex justify-content-end">
-                {/* <div className="PersonOption">
-                  <button className='DetailsItems'>
-                      <IoSearch />
-                  </button>
-                </div>
-                <div className="PersonOption">
-                  <button className='DetailsItems'>
-                      <MdOutlinePerson />
-                  </button>
-                </div>
-                <div className="PersonOption">
-                  <button className='DetailsItems'>
-                      <LuShoppingCart />
-                  </button>
-                </div> */}
                 {[IoSearch, MdOutlinePerson, LuShoppingCart].map((Icon, index) => (
                     <div className="PersonOption" ref={el => personOptionRef.current[index] = el} key={index}>
                         <button className='DetailsItems' ref={el => detailsItemsRef.current[index] = el}>
@@ -176,11 +178,18 @@ const Headers = () => {
       {/* SubMenu - Nằm ngoài Header */}
       {activeMenu !== null && (
         <ul className={`subMenu show`} ref={subMenuRef} onClick={(e) => e.stopPropagation()}>
-          {menuItems.find((item) => item.id === activeMenu)?.subMenu.map((sub, index) => (
-            <li key={index} className="subItems">
-              <Link to="/" className="subChildrens">{sub}</Link>
-            </li>
-          ))}
+          {menuItems.find((item) => item.id === activeMenu)?.subMenu.map((sub, index) => {
+               const parentLink = menuItems.find((item) => item.id === activeMenu)?.link || "";
+               const subSlug = sub.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
+               const subLink = `${parentLink}/${subSlug}`;
+               return (
+                <li key={index} className="subItems">
+                  <Link to={subLink} className={`subChildrens ${isSubMenuActive(sub) ? "active" : ""}`}>
+                    {sub}
+                  </Link>
+                </li>
+              );
+            })}
         </ul>
       )}
     </>

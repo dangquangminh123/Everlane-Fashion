@@ -78,7 +78,9 @@
     --background-button-nextprev: #ff961f;
     --background-element-about: #E6DED8;
     --color-about-explore: #4C4C4B;
+    --color-border-category: #d6d0d0;
     --gradient-background-button: linear-gradient(90deg, #F72585, #B5179E);
     --text-button-color: #2d4277;
     --text-title: #2a2a2a;
+    --text-stores: #a99d9d;
 }

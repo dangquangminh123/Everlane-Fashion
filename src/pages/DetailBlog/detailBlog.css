@@ -1,0 +1,16 @@
+.DetailBox {
+    width: 100%;
+    box-sizing: border-box;
+    height: auto;
+}
+
+.DetailBox .Detail_thumbs {
+    display: block;
+    width: 100%;
+}
+
+.DetailBox .Detail_thumbs img {
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}

@@ -1,0 +1,304 @@
+.everWorldBox {
+    width: 100%;
+    height: auto;
+    margin-top: 4em;
+}
+.everWorldBox .everWorldBoxBody {
+    box-sizing: border-box;
+    height: auto;
+    margin: 0em 1.4em;
+}
+/* Title */
+
+.everWorldBox  .everWorldBoxBody .everworldHeader {
+    border: 0.5em solid var(--text-color);
+    margin: 0 3em;
+}
+
+.everWorldBox .everWorldBoxBody .everworlTitle {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    margin: 1.2em 3em
+}
+
+.everWorldBox  .everWorldBoxBody .everworlTitle .everworldFirst {
+    font-size: 7em;
+    font-weight: 800;
+    text-align: left;
+    text-transform: lowercase;
+    color: var(--background-black);
+}
+
+.everWorldBox  .everWorldBoxBody .everworlTitle .everworldDescription {
+    font-size: 1.2em;
+    font-weight: 200;
+    text-align: left;
+    text-transform: lowercase;
+    color: var(--background-black);
+}
+/* End title */
+
+/* Body */
+
+.everWorldBox .everWorldBoxBody .everworldBody {
+    margin: 0em 2em;
+    margin-top: 6em;
+}
+
+.everWorldBox .everWorldBoxBody .everworldBody .newLatest {
+    padding-left: 1em;
+    text-align: left;
+}
+
+.everWorldBox .everWorldBoxBody .everworldBody .newLatest .titleLatest {
+    color: var(--background-black);
+    font-size: 2.5em;
+    text-transform: capitalize;
+    word-spacing: 2px;
+}
+
+
+.everWorldBox .everWorldBoxBody .everworldBody .blogBody {
+    max-width: 100%;
+}
+
+
+.blogBody .Itemsever {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 2em 0em;
+    padding: 0em 1em;
+    height: auto; 
+}
+
+.blogBody .Itemsever .imagesItems {
+    display: flex;
+    width: 100%;
+    height: 30rem;    
+    flex-shrink: 0;
+    overflow: hidden;
+    min-height: 30rem;
+}
+.Itemsever .imagesItems .imageEver {
+   width: 100%;
+   height: 100%;
+   text-decoration: none;
+   display: block;
+}
+
+.Itemsever .imagesItems .imageEver img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.Itemsever .detailEver {
+    margin-top: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.Itemsever .detailEver .titleEver {
+    text-decoration: none;
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-weight: 300;
+    color: var(--text-title);
+    word-wrap: break-word;
+    line-height: 1.3;
+}
+
+
+.Itemsever .detailEver .detailCategory {
+    background: var(--background-white);
+    border: 1px solid var(--color-border-category);
+    margin-top: 1em;
+    display: block;
+    text-align: center;
+    width: fit-content;
+    padding: 0 2rem;
+    height: 2.3rem;
+    line-height: 2.1;
+    border-radius: 2rem;
+}
+
+.Itemsever .detailEver .detailCategory .categoryEver {
+    text-transform: capitalize;
+    font-size: 1em;
+    font-weight: 450; 
+    color: var(--background-black);
+}
+
+.Itemsever .detailEver .detailCategory .categoryEver:hover {
+    color: var(--text-stores);
+}
+/* End Blog body */
+
+/* Loadmore */
+.loadMoreWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 3em 0;
+  }
+  
+  .loadMoreBtn {
+    background-color: var(--background-black);
+    color: var(--background-white);
+    padding: 1em;
+    text-transform: capitalize;
+    font-size: 01em;
+    border: none;
+    width: 15rem;
+    border-radius: 0.6em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .loadMoreBtn:hover {
+    background-color: var(--text-stores);
+  }
+/* End loadmore */
+
+/* brnad TrustZone */
+.everWorldBox .Trustzone {
+    display: block;
+    width: 100%;
+    height: 9rem;
+    overflow: hidden;
+    margin-bottom: 7em;
+}
+
+.everWorldBox .Trustzone img{
+    display: block;
+    width: 100%;
+    object-fit: cover;
+    height: 100%;
+}
+
+/* End Brand */
+
+
+/* Progress */
+.ProgressContent {
+    box-sizing: border-box;
+    margin: 5em 1.4em 1em 1.4em;
+    display: flex;
+    flex-direction: column;
+}
+
+.ProgressContent .ContentTitle {
+    text-align: left;
+    width: 100%;
+    margin-bottom: 0.5em;
+}
+
+.ProgressContent .ContentTitle .HeaderContent {
+    text-transform: capitalize;
+    color: var(--background-black);
+    word-spacing: 0.2em;
+    font-size: 3.3em;
+    font-weight: 600;
+}
+
+/* List ProgressContent */
+.ProgressContent .ListProgress {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ProgressContent .ListProgress .itemProgress {
+    display: flex;
+    flex-basis: 35em;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 2.9em;
+    align-items: flex-start;
+    flex-grow: 0;
+    flex-shrink: 1;
+    height: auto; /* Hoặc một chiều cao cố định nếu bạn muốn kiểm soát */
+}
+
+.ListProgress .itemProgress .itemProgressLink {
+    display: block;
+    width: 100%;
+    height: auto; /* Phải có */
+    overflow: hidden;
+    text-decoration: none;
+}
+
+.ListProgress .itemProgress .itemProgressLink img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Hoặc contain nếu bạn muốn ảnh hiển thị trọn vẹn */
+    display: block;
+}
+
+.ListProgress .itemProgress .descriptionTitle {
+    margin-top: 0.9rem;
+    font-size: 2.8rem;
+    font-weight: 300;
+    word-spacing: 0.15em;
+    text-transform: capitalize;
+}
+/* End progress */
+
+
+/* FollowUs */
+
+.FollowUs {
+    background: var(--background-black);
+    padding: 3.5em 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    height: 22rem;
+}
+
+.FollowUs .titleFollow {
+    color: var(--text-white);
+    word-spacing: 0.1em;
+    text-transform: lowercase;
+    font-size: 2.8em;
+    font-weight: 500;
+    margin-bottom: 1.2em;
+}
+
+.FollowUs .backgroundBtn {
+    background: var(--background-white);
+    text-align: center;
+    padding: 1.2em 2em;
+    display: block;
+    width: fit-content;
+    height: auto;
+    border-radius: 0.5rem;
+    transition: background 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+
+.FollowUs .backgroundBtn .BtnFollow {
+    font-weight: 400;
+    background: none;
+    font-size: 1em;
+    display: block;
+    outline: none;
+    border: none;
+    width: 100%;
+    height: 100%;
+    line-height: 1.2em;
+}
+
+.FollowUs .backgroundBtn:hover {
+    background-color: var(--text-stores);
+
+}

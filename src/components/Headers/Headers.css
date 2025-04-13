@@ -73,6 +73,11 @@ ul.menuHeader li.itemsMenu a.itemChildrens {
     padding: 2.5rem 0rem;
 }
 
+ul.menuHeader li.itemsMenu a.itemChildrens.active {
+    border-bottom: 2px solid var(--color-bottom-line);
+
+}
+
 ul.menuHeader li.itemsMenu:hover{
     border-bottom: 2px solid var(--color-bottom-line);
 }
@@ -103,6 +108,7 @@ ul.subMenu .subItems {
 ul.subMenu .subItems .subChildrens{
     text-decoration: none;
     color: var(--text-color);
+    text-transform: capitalize;
     display: block;
     padding: 5px 10px;
     transition: all 0.3s ease-in-out;
@@ -110,6 +116,11 @@ ul.subMenu .subItems .subChildrens{
 
 ul.subMenu .subItems:hover .subChildrens {
     color: var(--text-color-hover);
+}
+
+ul.subMenu .subItems .subChildrens.active {
+    color: var(--text-color-hover);
+    border-bottom: 2px solid var(--color-bottom-line);
 }
 
 /* Nếu có class "show" thì hiển thị */
@@ -126,9 +137,17 @@ ul.subMenu.show {
     height: 100%;
 }
 
-.Header .LogoHeader img {
-    width: 20%;
+.Header .LogoHeader .LogoLink {
+    text-decoration: none;
+    width: 30%;
     height: 20%;
+    overflow: hidden;
+}
+
+.Header .LogoHeader img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
 }
 
 .Header .PersonalHeader {

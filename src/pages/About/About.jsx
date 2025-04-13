@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect }  from 'react';
 import { motion, useScroll, useTransform } from "framer-motion";
+import { useLocation, Outlet } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import { Link } from 'react-router-dom'
 import './About.css'
@@ -21,6 +22,8 @@ const listExplore  = [
 
 ];
 const About = () => {
+  const isAboutPage = location.pathname === "/about";
+
   const [triggerAnimation, setTriggerAnimation] = useState(false);
   const [textColor, setTextColor] = useState("#000"); // Màu chữ ban đầu
 
@@ -48,49 +51,39 @@ const About = () => {
   }, []);
   
   return (
+    
+   
     <>
+      {isAboutPage && (
         <div className="AboutBox">
-           {/* <div className="AboutInfoOne">
-              <div className="imagesAboutIntro">
-                  <img src={intro1} alt='Intro 1' />
-              </div>
-              <div className="ContentAbout">
-                <h4 className='DetailContent'>At Everlane, we want the right choice to be as easy as putting on a great T-shirt. 
-                  That’s why we partner with the best, ethical factories around the world. Source only the finest materials. 
-                  And share those stories with you—down to the true cost of every product we make. 
-                  It’s a new way of doing things. We call it Radical Transparency.</h4>
-              </div>
-           </div> */}
+          <div className="AboutInfoOne">
+              <motion.div 
+                className="imagesAboutIntro"
+                animate={triggerAnimation ? { rotateY: 360, opacity: 1 } : { rotateY: 0, opacity: 1 }}
+                transition={{ duration: 4, ease: "easeInOut" }}
+                style={{ transformOrigin: "center" }} // Đảm bảo xoay quanh trục giữa
+              >
+                <img src={intro1} alt="Intro 1" />
+              </motion.div>
 
-<div className="AboutInfoOne">
-      {/* Hình ảnh Flip 360 độ */}
-      <motion.div 
-        className="imagesAboutIntro"
-        animate={triggerAnimation ? { rotateY: 360, opacity: 1 } : { rotateY: 0, opacity: 1 }}
-        transition={{ duration: 4, ease: "easeInOut" }}
-        style={{ transformOrigin: "center" }} // Đảm bảo xoay quanh trục giữa
-      >
-        <img src={intro1} alt="Intro 1" />
-      </motion.div>
-
-      {/* Nội dung */}
-      <motion.div 
-        className="ContentAbout"
-        animate={triggerAnimation ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
-        transition={{ duration: 1 }}
-      >
-        <motion.h4 
-          className="DetailContent"
-          animate={{ color: textColor }} // Chỉ đổi màu chữ chứ không mất chữ
-          transition={{ duration: 0.5, ease: "easeInOut" }}
-        >
-          At Everlane, we want the right choice to be as easy as putting on a great T-shirt. 
-          That’s why we partner with the best, ethical factories around the world. 
-          Source only the finest materials. And share those stories with you—down to the true cost of every product we make. 
-          It’s a new way of doing things. We call it Radical Transparency.
-        </motion.h4>
-      </motion.div>
-    </div>
+              {/* Nội dung */}
+              <motion.div 
+                className="ContentAbout"
+                animate={triggerAnimation ? { opacity: 1, x: 0 } : { opacity: 1, x: 0 }}
+                transition={{ duration: 1 }}
+              >
+                <motion.h4 
+                  className="DetailContent"
+                  animate={{ color: textColor }} // Chỉ đổi màu chữ chứ không mất chữ
+                  transition={{ duration: 0.5, ease: "easeInOut" }}
+                >
+                  At Everlane, we want the right choice to be as easy as putting on a great T-shirt. 
+                  That’s why we partner with the best, ethical factories around the world. 
+                  Source only the finest materials. And share those stories with you—down to the true cost of every product we make. 
+                  It’s a new way of doing things. We call it Radical Transparency.
+                </motion.h4>
+              </motion.div>
+          </div>
            <div className="AboutInfoTwo">
               <div className="AboutCompany">
                   <div className="ImagesDetails">
@@ -159,10 +152,13 @@ const About = () => {
                       </div>
                     ))}
                   </div>
-              </div>
-           
+          </div>
         </div>
+      )}
+     <Outlet />
+
     </>
+
   )
 }
 
