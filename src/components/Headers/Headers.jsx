@@ -11,10 +11,32 @@ import logo from '../../assets/Logo.png'
 import { gsap } from 'gsap';
 
 const Headers = () => {
+  const currentPath = location.pathname;
+  const menuItems = [
+    { id: 1, name: "Woman", link: "/list_product", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
+    { id: 2, name: "Men", link: "/list_product", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
+    { id: 3, name: "About", link: "/about", subMenu: ["Stores", "Factories", "Environmental Initiatives", "Our Carbon Commitment", "Annual Impact Report", "Cleaner Fashion"] },
+    { id: 4, name: "Everworld Stories", link: "/everworld", subMenu: [] }
+  ];
+
+    // Handle Active user access directly
+    const getMenuIdByPath = () => {
+      for (const item of menuItems) {
+        for (const sub of item.subMenu) {
+          const subSlug = sub.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
+          const subLink = `${item.link}/${subSlug}`;
+          if (currentPath === subLink) {
+            return item.id;
+          }
+        }
+      }
+      return null;
+    };
 
   const [activeMenu, setActiveMenu] = useState(null);
+  // const [activeMainMenu, setActiveMainMenu] = useState(null);
+  const [activeMainMenu, setActiveMainMenu] = useState(getMenuIdByPath());
   const subMenuRef = useRef(null);
-
   const signUpRef = useRef(null);
   const arrowRef = useRef(null);
   const currencyRef = useRef(null);
@@ -23,17 +45,22 @@ const Headers = () => {
   const personOptionRef = useRef([]);
   const detailsItemsRef = useRef([]);
 
-  const menuItems = [
-    { id: 1, name: "Woman", link: "/woman", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
-    { id: 2, name: "Men", link: "/men", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
-    { id: 3, name: "About", link: "/about", subMenu: ["Stores", "Factories", "Environmental Initiatives", "Our Carbon Commitment", "Annual Impact Report", "Cleaner Fashion"] },
-    { id: 4, name: "Everworld Stories", link: "/everworld", subMenu: [] }
-  ];
 
   const handleMenuClick = (id, event) => {
-    // event.preventDefault(); // Ngăn điều hướng nếu có submenu
     event.stopPropagation(); // Ngăn sự kiện lan ra ngoài
     setActiveMenu(activeMenu === id ? null : id); // Toggle menu
+    setActiveMainMenu(id); // mark as active
+  };
+
+
+  const isMainMenuActive = (item) => {
+    return currentPath.startsWith(item.link);
+  };
+
+  const isSubMenuActive = (parentLink, subItem) => {
+    const subSlug = subItem.toLowerCase().replace(/\s+/g, "-").replace(/[^\w-]+/g, "");
+    const subPath = `${parentLink}/${subSlug}`;
+    return currentPath === subPath;
   };
 
   useEffect(() => {
@@ -94,7 +121,7 @@ const Headers = () => {
         stagger: 0.2,
         ease: "circ.out"
     });
-    // Khi click bên ngoài submenu, đóng submenu lại
+
     const handleClickOutside = (event) => {
       if (subMenuRef.current && !subMenuRef.current.contains(event.target)) {
         setActiveMenu(null);
@@ -106,20 +133,6 @@ const Headers = () => {
       document.removeEventListener("click", handleClickOutside);
     };
   }, []);
-
-  const currentPath = location.pathname;
-
-  const isMainMenuActive = (item) => {
-    if (item.name === "About" && currentPath.startsWith("/about")) return true;
-    if (item.name === "Woman" && currentPath.startsWith("/woman")) return true;
-    if (item.name === "Men" && currentPath.startsWith("/men")) return true;
-    return false;
-  };
-
-  const isSubMenuActive = (subItem) => {
-    const subPath = subItem.toLowerCase().replace(/\s+/g, "-"); // convert "New Arrivals" => "new-arrivals"
-    return currentPath.includes(subPath);
-  };
   
   return (
     <>
@@ -145,8 +158,8 @@ const Headers = () => {
                   >
                     <Link
                        to={item.link}
-                      className={`itemChildrens ${isMainMenuActive(item) ? "active" : ""}`}
-                      // onClick={(e) => handleMenuClick(item.id, e)}
+                      className={`itemChildrens ${activeMainMenu === item.id ? "active" : ""}`}
+                      onClick={(e) => handleMenuClick(item.id, e)}
                     >
                       {item.name}
                     </Link>
@@ -184,7 +197,10 @@ const Headers = () => {
                const subLink = `${parentLink}/${subSlug}`;
                return (
                 <li key={index} className="subItems">
-                  <Link to={subLink} className={`subChildrens ${isSubMenuActive(sub) ? "active" : ""}`}>
+                  <Link 
+                    to={subLink}
+                    className={`subChildrens ${isSubMenuActive(parentLink, sub) ? "active" : ""}`}
+                  >
                     {sub}
                   </Link>
                 </li>

@@ -36,7 +36,6 @@ const ProgressList = [
     {image: Progress1, description: "Carbon Commitment"},
     {image: Progress2, description: "Environmental Initiatives"},
     {image: Progress3, description: "Better Factories"},
-
 ]
 const everWorld = () => {
     const [visibleCount, setVisibleCount] = useState(6); // Ban đầu 6 bài

@@ -7,6 +7,7 @@
 .DetailBox .Detail_thumbs {
     display: block;
     width: 100%;
+    height: auto;
 }
 
 .DetailBox .Detail_thumbs img {
@@ -14,3 +15,398 @@
     object-fit: cover;
     overflow: hidden;
 }
+
+/* detailBlog Content */
+
+.DetailBox .detailBlogContent {
+    box-sizing: border-box;
+    height: auto;
+    margin: 0em 1.4em;
+}
+
+.DetailBox .detailBlogContent .headerDetail {
+    border: 0.5em solid var(--text-color);
+    margin: 5em 3em 2em 3em;
+}
+
+.detailBlogContent .firstSpeak {
+    margin: 1em 3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+}
+
+.detailBlogContent .firstSpeak .iconfirst {
+    list-style-type: none;
+    flex-basis: 10em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.detailBlogContent .firstSpeak .iconfirst li.itemIcon {
+    margin-right: 0.4em;
+}
+
+.firstSpeak .iconfirst .itemIcon svg {
+    font-size: 1.7em;
+    font-weight: 800;
+    border-radius: 0.1em;
+    color: var(--color-bottom-line);
+}
+
+.detailBlogContent .firstSpeak .contentSpeak {
+    flex-basis: 87em;
+    justify-content: flex-end;
+    display: flex;
+}
+
+.detailBlogContent .firstSpeak .contentSpeak .contentDetail {
+    font-weight: 400;
+    font-size: 1.7em;
+    color: var(--background-black);
+    display: -webkit-box;
+    line-height: 1.5em;
+    overflow: hidden;
+    text-align: justify;     
+}
+/* Tiếp tục secondThumb */
+
+.detailBlogContent .secondSpeak {
+    margin: 5em 3em;
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+
+
+.detailBlogContent .secondSpeak .secondThumbnail {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: auto; /* Bạn có thể điều chỉnh nếu muốn */
+}
+
+.detailBlogContent .secondSpeak .secondThumbnail img {
+    overflow: hidden;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+
+.secondSpeak .secondContent {
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;
+    padding: 0 15em; /* KHÔNG dùng margin-left/right, dùng padding để không đẩy phần tử ra ngoài */
+    box-sizing: border-box;
+    margin-top: 2em;
+}
+
+.secondContent .titleItem {
+    font-weight: 700;
+    margin: 1em 0em;
+    width: 100%;
+    text-align: left;
+}
+
+.secondContent .textItems {
+    width: 100%;
+    text-align: left;
+}
+
+.secondContent .textItems .hightLight {
+  text-decoration: underline;
+}
+/* End detailsBlog content */
+
+.Clothes {
+    width: 100vw; /* Chiếm toàn bộ chiều rộng màn hình */
+    margin: 4em 0em 4em 0em;
+}
+
+.Clothes .ClothesHeader {
+    text-align: center;
+}
+
+.ClothesHeader .TitleClothes {
+    font-weight: 300;
+    font-size: 1.5em;
+    margin-bottom: 1em;
+}
+
+.ClothesHeader .DescriptionClothes {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.Clothes .ClothesBody {
+    margin-top: 1.9em;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+}
+
+.Clothes .ClothesBody .SwiperContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.4em; 
+    width: 100%;
+    overflow: hidden;
+}
+
+.Clothes .ClothesBody .ListClothes .swiper-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* Căn giữa thủ công */
+    transition: transform 0.3s ease-in-out;
+}
+
+.Clothes .ClothesBody .ListClothes {
+    display: flex;
+    justify-content: flex-start;
+    width: 100% !important;
+    height: 100%;
+    max-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    white-space: nowrap; /* Giữ nội dung trong cùng một hàng */
+}
+
+.ClothesBody .ListClothes .SlideClothes {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 100%;
+    padding: 0 1.4em;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+
+.Clothes .ClothesBody .FavPreBtn,
+.Clothes .ClothesBody .FavNextBtn {
+    position: absolute;
+    top: 49%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 10; 
+    transition: all 0.3s ease-in;
+}
+
+.Clothes .ClothesBody .FavPreBtn:hover,
+.Clothes .ClothesBody .FavNextBtn:hover {
+    background: var(--text-button-hover);
+    color: var(--color-button-nextprev);
+    border-radius: 38%;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.Clothes .ClothesBody .FavPreBtn {
+    left: 0.5%;
+}
+
+.Clothes .ClothesBody .FavNextBtn {
+    right: 0.5%;
+}
+
+
+.Clothes .ClothesBody .ListClothes .ItemsClothes {
+    width: 30em;
+    height: 41em;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0.9em;
+    overflow: hidden;
+}
+
+.ListClothes .ItemsClothes .ImagesItems {
+    width: 100%;
+    flex-grow: 1; 
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.ListClothes .ItemsClothes .ImagesItems .OneImages {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+}
+
+.ListClothes .ItemsClothes .ImagesItems .OneImages img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ListClothes .ItemsClothes .InfoItems {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-self: stretch;
+    margin-top: 1em;
+    align-items: flex-start;
+    padding: 0em;
+    text-align: center;
+    flex-shrink: 0; /* Không cho phần này co lại */
+}
+
+.ListClothes .ItemsClothes .InfoItems .NameColorItems {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ItemsClothes .InfoItems .NameColorItems .NameItems{
+    text-decoration: none;
+    color: var(---text-title);
+    font-size: 1em;
+    font-weight: 400;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.ItemsClothes .InfoItems .NameColorItems .ColorItems {
+    color: var(--color-type);
+    font-size: 0.8em;
+    font-weight: 300;
+    text-align: left;
+}
+
+.ListClothes .ItemsClothes .InfoItems .PriceSoldItems {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.ItemsClothes .InfoItems .PriceSoldItems .PriceItems {
+    color: var(--text-color);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: right;
+}
+
+/* ShopNow */
+.shopNowWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 3em 0;
+}
+  
+  .shopNowBtn {
+    background-color: var(--background-black);
+    color: var(--background-white);
+    padding: 1em;
+    text-transform: capitalize;
+    font-size: 01em;
+    border: none;
+    width: 15rem;
+    border-radius: 0.6em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .shopNowBtn:hover {
+    background-color: var(--text-stores);
+  }
+/* End ShopNow */
+
+
+/* Blog more */
+.blogProduct {
+    /* margin: 0em 2em; */
+    margin-top: 3em;
+}
+.blogProduct .blogBody {
+    margin-top: 2em;
+}
+.blogBody .ItemBlog {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    margin: 2em 0em;
+    padding: 0em 1em;
+    height: auto; 
+}
+
+
+.blogBody .ItemBlog .imagesItems {
+    display: flex;
+    width: 100%;
+    height: 30rem;    
+    flex-shrink: 0;
+    overflow: hidden;
+    min-height: 30rem;
+}
+.ItemBlog .imagesItems .imageEver {
+   width: 100%;
+   height: 100%;
+   text-decoration: none;
+   display: block;
+}
+
+.ItemBlog .imagesItems .imageEver img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.ItemBlog .detailEver {
+    margin-top: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.ItemBlog .detailEver .titleEver {
+    text-decoration: none;
+    font-size: 2rem;
+    text-transform: capitalize;
+    font-weight: 300;
+    color: var(--text-title);
+    word-wrap: break-word;
+    line-height: 1.3;
+}
+
+
+.ItemBlog .detailEver .detailCategory {
+    background: var(--background-white);
+    border: 1px solid var(--color-border-category);
+    margin-top: 1em;
+    display: block;
+    text-align: center;
+    width: fit-content;
+    padding: 0 2rem;
+    height: 2.3rem;
+    line-height: 2.1;
+    border-radius: 2rem;
+}
+
+.ItemBlog .detailEver .detailCategory .categoryEver {
+    text-transform: capitalize;
+    font-size: 1em;
+    font-weight: 450; 
+    color: var(--background-black);
+}
+
+.ItemBlog .detailEver .detailCategory .categoryEver:hover {
+    color: var(--text-stores);
+}
+/* End Blog more */

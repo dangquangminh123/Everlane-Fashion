@@ -22,6 +22,7 @@ import About from './pages/About/About';
 import Stores from './pages/Stores/Stores';
 import Everworld from './pages/everWorld/everWorld';
 import DetailEverword from './pages/DetailBlog/detailBlog';
+import PageProduct from "./pages/listProduct/listProduct";
 const Layout = () =>{
   return (
     <div className='layout-app'>
@@ -69,6 +70,10 @@ function App() {
           path: "detail_blog",
           element: <DetailEverword />, 
         },
+        {
+          path: "list_product",
+          element: <PageProduct />,
+        }
         
       ],
     },
