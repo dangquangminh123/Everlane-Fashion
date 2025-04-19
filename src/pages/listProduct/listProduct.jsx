@@ -22,6 +22,7 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+      tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
     },
     {
       id: 1,
@@ -31,6 +32,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+      tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -40,6 +43,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -49,6 +54,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -58,6 +65,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -67,6 +76,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -76,6 +87,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -85,6 +98,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -94,6 +109,8 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
     {
       id: 1,
@@ -103,8 +120,11 @@ const products = [
       discount: "30% off",
       imageUrl: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
+          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
+
     },
 ];
+
   const categories = [
     'Everyone - All Gender, Collection',
     'Accessories & Gift Cards',
@@ -151,7 +171,26 @@ const ListProduct = () => {
   const colorsToShow = colorExpanded ? colors : colors.slice(0, 9);
   const [sizeExpanded, setSizeExpanded] = useState(false);
   const sizesToShow = sizeExpanded ? sizes : sizes.slice(0, 3);
-
+  function getColorName(hex) {
+    const colorMap = {
+      "#000000": "Black",
+      "#FFFFFF": "White",
+      "#FF0000": "Red",
+      "#00FF00": "Green",
+      "#0000FF": "Blue",
+      "#1A1A1A": "Black",
+      "#808080": "Gray",
+      "#FFA500": "Orange",
+      "#FFFF00": "Yellow",
+      "#800080": "Purple",
+      "#514535": "DarrkYellow",
+      // ... thêm nữa nếu cần
+    };
+  
+    const hexUpper = hex.toUpperCase();
+    return colorMap[hexUpper] || hexUpper;
+  }
+  
   return (
     <div className="product-page">
       {/* Sidebar */}
@@ -246,28 +285,51 @@ const ListProduct = () => {
       </aside>
 
       {/* Product List */}
-      <section className="product-list">
-        <h2>Men’s Clothing & Apparel - New Arrivals</h2>
-        <div className="flex-products">
-          {products.map((product) => (
-            <div className="product-card" key={product.id}>
+      <div className="flex-products">
+        {products.map((product) => (
+          <div className="product-card" key={product.id}>
+            {product.discount && (
               <div className="discount-tag">{product.discount}</div>
+            )}
+
+            <div className="product-image">
               <img src={product.imageUrl} alt={product.title} />
-              <h4>{product.title}</h4>
+            </div>
+
+            <div className="product-info">
+              <h4 className="product-title">{product.title}</h4>
               <div className="price">
                 <span className="old-price">${product.priceOld}</span>
                 <span className="new-price">${product.priceNew}</span>
               </div>
-              <div className="color-options">
-                {product.colors.map((color, idx) => (
-                  <span key={idx} className="color-circle" style={{ background: color }}></span>
-                ))}
-              </div>
             </div>
-          ))}
-        </div>
-      </section>
-    </div>
+
+            <div className="color-name">
+              {getColorName(product.colors[0])}
+            </div>
+
+            <div className="color-options">
+              {product.colors.map((color, idx) => (
+                <span
+                  key={idx}
+                  className="color-circle"
+                  style={{ background: color }}
+                ></span>
+              ))}
+            </div>
+      {/* TAGS SECTION */}
+
+            <div className="product-tags">
+              {product.tags.map((tag, index) => (
+                <div className="tag-item" key={index}>
+                  <p className='tag-name'>{tag}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+          </div>
+      </div>
   );
 };
 
