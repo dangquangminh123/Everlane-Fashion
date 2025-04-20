@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect }  from 'react';
 import "./listProduct.css";
 import { FiPlus } from "react-icons/fi";
 import { HiMinus } from "react-icons/hi2";
-
+import ProductItem from "../../components/ProductItem/ProductItem";
 import product1 from "../../assets/Product/product1.png";
 import product2 from "../../assets/Product/product2.png";
 import product3 from "../../assets/Product/product3.png";
@@ -21,104 +21,108 @@ const products = [
       priceNew: 132,
       discount: "30% off",
       imageUrl: product1,
+      image2: product2,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
       tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
     },
     {
-      id: 1,
+      id: 2,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product2,
+      image2: product3,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
       tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
     },
     {
-      id: 1,
+      id: 3,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product3,
+      image2: product4,
+
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
           tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
     },
     {
-      id: 1,
+      id: 4,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product4,
+      image2: product5,
+
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
           tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
     },
     {
-      id: 1,
+      id: 5,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product5,
+      image2: product6,
+
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
           tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
     },
     {
-      id: 1,
+      id: 6,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product6,
+      image2: product7,
+
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
           tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
     },
     {
-      id: 1,
+      id: 7,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product7,
+      image2: product8,
+
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
           tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
     },
     {
-      id: 1,
+      id: 8,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product8,
+      image2: product9,
+
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
           tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
     },
     {
-      id: 1,
+      id: 9,
       title: "The Waffle Long-Sleeve Crew",
       priceOld: 188,
       priceNew: 132,
       discount: "30% off",
-      imageUrl: product1,
-      colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
-          tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
-
-    },
-    {
-      id: 1,
-      title: "The Waffle Long-Sleeve Crew",
-      priceOld: 188,
-      priceNew: 132,
-      discount: "30% off",
-      imageUrl: product1,
+      imageUrl: product9,
+      image2: product1,
       colors: ["#514535", "#3A3840", "#8C7058", "#262525"],
           tags: ["Sweater", "Long-sleeve", "Cozy", "Unisex", "Limited Edition"]
 
@@ -153,6 +157,7 @@ const products = [
     { name: 'Navy', color: '#001F3F' },
     { name: 'Beige', color: '#F5F5DC' },
   ];
+
   const sizes = [
     { label: 'Waist', options: ['36', '38', '40', '42', '44', '46', '48', '50'] },
     { label: 'Clothing', options: ['XXS', 'XS', 'S', 'M', 'L', 'XL', 'XXL', 'XXXL'] },
@@ -177,8 +182,10 @@ const ListProduct = () => {
       "#FFFFFF": "White",
       "#FF0000": "Red",
       "#00FF00": "Green",
+      "#3A3840": "Nayu",
       "#0000FF": "Blue",
-      "#1A1A1A": "Black",
+      "#262525": "Black",
+      "#8C7058": "Brown",
       "#808080": "Gray",
       "#FFA500": "Orange",
       "#FFFF00": "Yellow",
@@ -284,52 +291,19 @@ const ListProduct = () => {
         </div>
       </aside>
 
+     
       {/* Product List */}
-      <div className="flex-products">
-        {products.map((product) => (
-          <div className="product-card" key={product.id}>
-            {product.discount && (
-              <div className="discount-tag">{product.discount}</div>
-            )}
-
-            <div className="product-image">
-              <img src={product.imageUrl} alt={product.title} />
-            </div>
-
-            <div className="product-info">
-              <h4 className="product-title">{product.title}</h4>
-              <div className="price">
-                <span className="old-price">${product.priceOld}</span>
-                <span className="new-price">${product.priceNew}</span>
-              </div>
-            </div>
-
-            <div className="color-name">
-              {getColorName(product.colors[0])}
-            </div>
-
-            <div className="color-options">
-              {product.colors.map((color, idx) => (
-                <span
-                  key={idx}
-                  className="color-circle"
-                  style={{ background: color }}
-                ></span>
+      <div className="product-list">
+          <div className="breadcrumb">Home / Men</div>
+          <h2 className="category-title">Men</h2>
+          <div className="flex-products">
+           
+             {products.map((product, index) => (
+                <ProductItem key={product.id} product={product} getColorName={getColorName} />
               ))}
-            </div>
-      {/* TAGS SECTION */}
-
-            <div className="product-tags">
-              {product.tags.map((tag, index) => (
-                <div className="tag-item" key={index}>
-                  <p className='tag-name'>{tag}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        ))}
           </div>
       </div>
+    </div>
   );
 };
 
