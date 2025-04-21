@@ -264,7 +264,7 @@ const ListProduct = () => {
           <h3 className="filter-title">Size</h3>
 
           {sizesToShow.map((group, idx) => (
-            <div key={idx}>
+            <div key={idx} className='size-wrapper'>
               <p className="sub-title">{group.label}</p>
               <div className="size-grid">
                 {group.options.map((size, index) => (

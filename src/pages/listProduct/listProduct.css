@@ -6,14 +6,14 @@
 
   }
   
-  .sidebar {
+.product-page  .sidebar {
     flex: 0 0 15%; /* Không co giãn, chiếm 30% */
     max-width: 15%;
     font-family: Arial, sans-serif;
   }
   
   /* Tổng số sản phẩm */
-.product-count p {
+.product-page .sidebar .product-count p {
   color: #999; /* xám nhạt */
   font-weight: normal;
   font-size: 1.1rem;
@@ -27,18 +27,18 @@
 }
   
 /* Group tiêu đề Category */
-.filter-group {
+.product-page .sidebar .filter-group {
   margin-bottom: 2rem;
 }
 
-.filter-title {
+.product-page .sidebar .filter-group .filter-title {
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 1rem;
 }
 
 /* Wrapper cho từng checkbox + text */
-.checkbox-wrapper {
+.product-page .sidebar .filter-group .checkbox-wrapper {
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
@@ -47,7 +47,7 @@
 }
 
 /* Container riêng cho checkbox để giữ kích thước ổn định */
-.checkbox-container {
+.sidebar .filter-group .checkbox-wrapper .checkbox-container {
   flex-shrink: 0;
   width: 3rem;
   height: 3rem;
@@ -57,13 +57,13 @@
 }
 
 /* Ô checkbox */
-.checkbox {
+.sidebar .filter-group .checkbox-wrapper .checkbox-container .checkbox {
   width: 100%;
   height: 100%;
 }
 
 /* Text cho category */
-.category-text {
+.sidebar .filter-group .checkbox-wrapper .category-text {
   padding-top: 0.4em;
   flex: 1;
   font-size: 1.1rem;
@@ -71,46 +71,50 @@
   word-break: break-word;
 }
   
-  .color-grid {
+.sidebar .filter-group .color-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
   }
   
-  .color-item {
+.sidebar .filter-group .color-grid .color-item {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 3em;
   }
   
-  .color-box {
+.filter-group .color-grid .color-item .color-box {
     width: 3em;
     height: 3em;
     border-radius: 50%;
     border: 1px solid #ccc;
   }
   
-  .color-label {
+.filter-group .color-grid .color-item .color-label {
     text-transform: capitalize;
     font-size: 0.9rem;
     margin-top: 0.4rem;
-  }
+}
   
-  .sub-title {
+.sidebar .filter-group .size-wrapper .sub-title {
     font-size: 1rem;
     margin-bottom: 0.5rem;
     color: #333;
   }
+
+ .sidebar .filter-group .size-wrapper{
+
+}
   
-  .size-grid {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
+.sidebar .filter-group .size-wrapper .size-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
   
-  .size-box {
+.sidebar .filter-group .size-wrapper .size-grid .size-box {
     width: 3.5em;
     height: 3.5em;
     display: flex;

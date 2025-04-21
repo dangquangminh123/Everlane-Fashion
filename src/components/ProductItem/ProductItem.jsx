@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './ProductItem.css'; // chứa phần CSS
 import { FiPlus } from "react-icons/fi";
+import { Link } from 'react-router-dom'
 
 const ProductItem = ({ product, getColorName }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -22,16 +23,16 @@ const ProductItem = ({ product, getColorName }) => {
       )}
 
         <div className="product-image-container">
-        <img
-          src={product.imageUrl}
-          alt={product.title}
-          className={`product-image ${isHovered ? 'hide' : ''}`}
-        />
-        <img
-          src={product.image2}
-          alt={product.title}
-          className={`product-image-hover ${isHovered ? 'show' : ''}`}
-        />
+          <img
+            src={product.imageUrl}
+            alt={product.title}
+            className={`product-image ${isHovered ? 'hide' : ''}`}
+          />
+          <img
+            src={product.image2}
+            alt={product.title}
+            className={`product-image-hover ${isHovered ? 'show' : ''}`}
+          />
           <button className="quick-add-button">
             <span className="button-text">QUICK ADD</span>
             <span className="button-icon"><FiPlus /></span>
@@ -39,7 +40,7 @@ const ProductItem = ({ product, getColorName }) => {
         </div>
 
       <div className="product-info">
-        <h4 className="product-title">{product.title}</h4>
+        <Link className="product-title">{product.title}</Link>
         <div className="price">
           <span className="old-price">${product.priceOld}</span>
           <span className="new-price">${product.priceNew}</span>

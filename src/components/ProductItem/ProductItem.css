@@ -1,22 +1,23 @@
-.breadcrumb {
+.product-page .product-list {
+  flex: 1; /* Tự động chiếm phần còn lại */
+  max-width: 85%;
+}
+
+.product-page .product-list .breadcrumb {
     font-size: 13px;
     color: #aaa;
     margin-bottom: 6px;
   }
   
-  .category-title {
+.product-page .product-list .category-title {
     font-size: 2em;
     font-weight: 300;
     color: #333;
     margin-bottom: 1.0em;
   }
   
-  .product-list {
-    flex: 1; /* Tự động chiếm phần còn lại */
-    max-width: 85%;
-  }
   
-  .flex-products {
+.product-page .product-list .flex-products {
     display: flex;
         flex-wrap: wrap;
         gap: 1em;
@@ -24,22 +25,34 @@
         padding: 1.3em 0;
   }
 
-  .product-card {
+.product-list .flex-products .product-card {
     position: relative;
     width: 29em;
     background: #fff;
     transition: box-shadow 0.3s;
   }
+
+/* Discount Tag */
+.flex-products .product-card .discount-tag {
+  position: absolute;
+  top: 9px;
+  left: 12px;
+  background: #fff;
+  color: #cc3314;
+  font-size: 15px;
+  padding: 2px 6px;
+  z-index: 2;
+}
   
-  .product-image-container {
+.flex-products .product-card .product-image-container {
     position: relative;
     width: 100%;
     height: 33em;
     overflow: hidden;
   }
   
-  .product-image,
-  .product-image-hover {
+.product-card .product-image-container .product-image,
+.product-card .product-image-container .product-image-hover {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -50,22 +63,22 @@
   }
   
   /* Mặc định: ảnh hover ẩn, ảnh chính hiện */
-.product-image-hover {
+.product-card .product-image-container .product-image-hover {
   opacity: 0;
 }
-.product-image {
+.product-card .product-image-container .product-image {
   opacity: 1;
 }
 
 /* Khi hover qua React => thay class */
-.product-image-hover.show {
+.product-card .product-image-container .product-image-hover.show {
   opacity: 1;
 }
-.product-image.hide {
+.product-card .product-image-container .product-image.hide {
   opacity: 0;
 }
   
-  .quick-add-button {
+.product-card .product-image-container .quick-add-button {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -82,72 +95,70 @@
       transition: bottom 0.3s ease, opacity 0.3s ease;
   }
   
-  .product-card:hover .quick-add-button {
+.product-card:hover .product-image-container .quick-add-button {
     bottom: 1.2em;
     opacity: 1;
   }
 
-  .quick-add-button svg {
+.product-image-container .quick-add-button .button-icon {
+    margin-left: auto;
+}
+
+.product-image-container .quick-add-button .button-icon.svg {
     text-align: right;
   }
 
-  .button-text {
+.product-image-container .quick-add-button .button-text {
     flex: 1;
     text-align: center;
   }
   
-  .button-icon {
-    margin-left: auto;
-  }
 
-  /* Discount Tag */
-  .discount-tag {
-    position: absolute;
-    top: 9px;
-    left: 12px;
-    background: #fff;
-    color: #cc3314;
-    font-size: 15px;
-    padding: 2px 6px;
-    z-index: 2;
-  }
+
   
-  /* Product Info - chung 1 hàng */
-  .product-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 10px;
-  }
+/* Product Info - chung 1 hàng */
+.flex-products .product-card .product-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
   
-  .product-title {
+.flex-products .product-card .product-info .product-title {
+    text-decoration: none;
     font-size: 14px;
     color: #333;
     font-weight: 400;
     margin: 0;
     flex: 1;
+    transition: all 0.3s ease-in-out;
   }
   
-  .price {
+.flex-products .product-card .product-info .product-title:hover {
+    color: #aaa;
+    font-weight: 500;
+  }
+  
+.flex-products .product-card .product-info .price {
     display: flex;
     gap: 6px;
     align-items: center;
   }
   
-  .old-price {
+.product-card .product-info .price .old-price {
     font-size: 14px;
     text-decoration: line-through;
     color: #aaa;
   }
   
-  .new-price {
+.product-card .product-info .price .new-price {
     font-size: 14px;
     color: #000;
     font-weight: bold;
   }
   
   /* Color Name */
-  .color-name {
+.flex-products .product-card .color-name {
     margin-top: 0.7em;
     font-size: 0.9em;
     color: #737373;
@@ -155,38 +166,39 @@
   }
   
   /* Color Circles */
-  .color-options {
-    display: flex;
-    gap: 8px;
-    margin-top: 8px;
-  }
+.flex-products .product-card .color-options {
+  display: flex;
+  gap: 8px;
+  margin-top: 8px;
+}
   
-  .color-circle {
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    transition: transform 0.2s ease;
-  }
+.flex-products .product-card .color-options .color-circle {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  transition: transform 0.2s ease;
+}
   
-  .color-circle:hover {
+.flex-products .product-card .color-options .color-circle:hover {
     border: 1px solid #000;
     transform: scale(1.2);
   }
   
-  .color-circle.active {
-    border: 2px solid black;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px black;
-  }
-  .product-tags {
-    display: flex;
-        flex-wrap: wrap;
-        gap: 0.4em;
-        margin-top: 10px;
-  }
+.flex-products .product-card .color-options .color-circle.active {
+  border: 2px solid black;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px black;
+}
+
+.flex-products .product-card .product-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-top: 10px;
+}
   
-  .tag-item {
+.product-card .product-tags .tag-item {
     display: flex;
         align-items: center;
         justify-content: center;
@@ -202,31 +214,6 @@
         border-radius: 4px;
   }
   
-  .tag-name {
+.product-card .product-tags .tag-item .tag-name {
     margin: 0;
-  }
-  
-  .quick-add-btn {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    background-color: black;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    opacity: 0;
-    transition: all 0.4s ease;
-    font-weight: bold;
-    letter-spacing: 1px;
-  }
-  
-  .quick-add-btn.show {
-    bottom: 20px;
-    opacity: 1;
-  }
-  
-  .product-name {
-    text-align: center;
-    margin-top: 10px;
   }

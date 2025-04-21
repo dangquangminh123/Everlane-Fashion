@@ -22,6 +22,7 @@ import About from './pages/About/About';
 import Stores from './pages/Stores/Stores';
 import Everworld from './pages/everWorld/everWorld';
 import DetailEverword from './pages/DetailBlog/detailBlog';
+import DetailProduct from "./pages/DetailProduct/DetailProduct";
 import PageProduct from "./pages/listProduct/listProduct";
 const Layout = () =>{
   return (
@@ -73,6 +74,10 @@ function App() {
         {
           path: "list_product",
           element: <PageProduct />,
+        },
+        {
+          path: "detail_product",
+          element: <DetailProduct />,
         }
         
       ],
