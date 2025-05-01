@@ -1,0 +1,207 @@
+.Recommends {
+    width: 100%;
+    padding: 2em;
+    margin: 1em auto;
+}
+
+.Recommends .RecommendHeader {
+    text-align: left;
+    padding: 0 1.4em;
+}
+
+.RecommendHeader .TitleFavorites {
+    font-size: 2em;
+    margin-bottom: 1em;
+    padding: 0em 1.4em;
+    text-transform: capitalize;
+}
+
+.Recommends .RecommendBody {
+    margin-top: 1.9em;
+    width: 100%;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    position: relative;
+}
+
+.Recommends .RecommendBody .SwiperContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.4em; 
+    width: 100%;
+    overflow: hidden;
+}
+
+.Recommends .RecommendBody .ListRecommend .swiper-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* Căn giữa thủ công */
+    transition: transform 0.3s ease-in-out;
+}
+
+.Recommends .RecommendBody .ListRecommend {
+    display: flex;
+    justify-content: flex-start;
+    width: 100% !important;
+    height: 100%;
+    max-width: 100%;
+    transition: transform 0.5s ease-in-out;
+    white-space: nowrap; /* Giữ nội dung trong cùng một hàng */
+}
+
+.RecommendBody .ListRecommend .SlideRecommend {
+    display: flex;
+    justify-content: space-between;
+    flex: 0 0 100%;
+    padding: 0 1.4em;
+    width: 100%;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    transition: transform 1s ease;
+}
+
+
+.Recommends .RecommendBody .RecPreBtn,
+.Recommends .RecommendBody .RecNextBtn {
+    position: absolute;
+    top: 49%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 2em;
+    cursor: pointer;
+    z-index: 10; 
+    transition: all 0.3s ease-in;
+}
+
+.Recommends .RecommendBody .RecPreBtn:hover,
+.Recommends .RecommendBody .RecNextBtn:hover {
+    background: var(--text-button-hover);
+    color: var(--color-button-nextprev);
+    border-radius: 38%;
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.Recommends .RecommendBody .RecPreBtn {
+    left: 0.5%;
+}
+
+.Recommends .RecommendBody .RecNextBtn {
+    right: 0.5%;
+}
+
+
+.Recommends .RecommendBody .ListRecommend .ItemsRecommend {
+    width: 30em;
+    height: 41em;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 0.9em;
+    overflow: hidden;
+}
+
+.ListRecommend .ItemsRecommend .ImagesItems {
+    width: 100%;
+    flex-grow: 1; 
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; 
+}
+
+.ListRecommend .ItemsRecommend .ImagesItems .OneImages {
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.ListRecommend .ItemsRecommend .ImagesItems .OneImages img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 1s ease;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.ListRecommend .ItemsRecommend .ImagesItems .OneImages .ImageMain {
+    z-index: 1;
+    opacity: 1;
+}
+
+/* Ảnh hover (ban đầu ẩn) */
+.ListRecommend .ItemsRecommend .ImagesItems .OneImages .ImageHover {
+    z-index: 2;
+    opacity: 0;
+}
+
+/* Khi hover thì fade in ảnh hover */
+.ListRecommend .ItemsRecommend .ImagesItems .OneImages .ImageHover.fadeIn {
+    opacity: 1;
+}
+
+.ListRecommend .ItemsRecommend .InfoItems {
+    width: 100%;
+    display: flex;
+    justify-content: space-between; 
+    align-self: stretch;
+    margin-top: 1em;
+    align-items: flex-start;
+    padding: 0em;
+    text-align: center;
+    flex-shrink: 0; /* Không cho phần này co lại */
+}
+
+.ListRecommend .ItemsRecommend .InfoItems .NameColorItems {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.ItemsRecommend .InfoItems .NameColorItems .NameItems{
+    text-decoration: none;
+    color: var(---text-title);
+    font-size: 1em;
+    font-weight: 400;
+    text-align: left;
+    line-height: 1.3;
+}
+
+.ItemsRecommend .InfoItems .NameColorItems .ColorItems {
+    color: var(--color-type);
+    font-size: 0.8em;
+    font-weight: 300;
+    text-align: left;
+}
+
+.ListRecommend .ItemsRecommend .InfoItems .PriceSoldItems {
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.ItemsRecommend .InfoItems .PriceSoldItems .PriceItems {
+    color: var(--text-color);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: right;
+}
+
+.ItemsRecommend .InfoItems .PriceSoldItems .SoldItems{
+    color: var(--text-color-hover);
+    font-size: 0.9em;
+    font-weight: 400;
+    text-align: right;
+}
+

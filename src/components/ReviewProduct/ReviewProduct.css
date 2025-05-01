@@ -1,0 +1,622 @@
+.reviewProduct {
+    margin: 2em auto;
+    max-width: 100%;
+    height: 100%;
+    padding: 0em 16em;
+}
+
+.reviewProduct .titleReview {
+    text-align: center;
+    max-width: 100%;
+}
+
+/* Overal review */
+.reviewProduct .overallReview {
+    background: var(--background-gray);
+    height: auto;
+    width: 100%;
+    display: flex;
+    align-items: self-start;
+    justify-content: space-evenly;
+    padding: 4em 0em;
+}
+
+.reviewProduct .overallReview .totalRating {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 20%;
+}
+
+.reviewProduct .overallReview .totalRating .nameRating {
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--background-black);
+}
+
+.reviewProduct .overallReview .totalRating .iconRating {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.2em;
+}
+
+.overallReview .totalRating .iconRating svg {
+    color: var(--background-black);
+    font-size: 1.8em;
+    font-weight: 800;
+}
+
+.reviewProduct .overallReview .listRating {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    width: 40%;
+}
+
+.reviewProduct .overallReview .listRating .itemRating {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.reviewProduct .overallReview .ratingLevel {
+    display: flex;
+    justify-content: flex-end;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 20%;
+}
+
+.reviewProduct .overallReview .ratingLevel .runLevel {
+    line-height: 0;
+    text-transform: capitalize;
+    font-weight: 500;
+    color: var(--background-black);
+    margin-bottom: 1.5em;
+}
+
+.reviewProduct .overallReview .ratingLevel .iconRating {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    align-items: flex-start;
+    height: auto;
+    gap: 0.3em;
+}
+
+.overallReview .ratingLevel .iconRating .rankRating {
+    display: block;
+    width: 3em;
+    background: var(--background-rank);
+    border: none;
+    height: 0.5em;
+}
+
+.overallReview .ratingLevel .iconRating .rankRating.active {
+    background: var(--background-black);
+}
+
+.overallReview .ratingLevel .descriptionRank {
+    margin-top: 0.9em;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.overallReview .ratingLevel .descriptionRank .runSmnall,
+.overallReview .ratingLevel .descriptionRank .runLarge {
+    font-size: 0.9em;
+    color: var(--text-stores);
+}
+/* End overal Review */
+
+/* Sort By Filter */
+.reviewProduct .sortFilter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3em;
+}
+
+.reviewProduct .sortFilter .filterReview {
+    background: var(--background-white);
+    border-radius: 0;
+    border: 1px solid var(--background-rank);
+    height: 4em;
+    margin: 0;
+    color: var(--color-cate-review);
+    width: 13em;
+    padding: 1em;
+    display: flex; 
+   justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.reviewProduct .sortFilter .filterReview .titleFilter {
+    color: var(--background-black);
+    font-size: 1.2em;
+    line-height: 0;
+    margin: 0;
+}
+
+.reviewProduct .sortFilter .filterReview .barMenu {
+
+}
+
+.reviewProduct .sortFilter .filterReview .barMenu svg {
+    color: var(--background-black);
+    font-size: 1.3em;
+    font-weight: 300;
+}
+
+/* Popup filterReview */
+.reviewProduct .sortFilter .cateFiterRv {
+    position: absolute;
+    left: 0%;
+    top: 5em;
+    width: 13em;
+    height: fit-content;
+    z-index: 10;
+    background: transparent;
+    display: block;
+}
+
+.reviewProduct .sortFilter .cateFiterRv .listTypeReview {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.sortFilter .cateFiterRv .listTypeReview li.itemTypeReview {
+    width: 100%;
+    height: fit-content;
+    background: var(--background-gray);
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    color: var(--color-cate-review);
+    transition: all 0.4s ease-in-out;    
+    position: relative;
+}
+
+.sortFilter .cateFiterRv .listTypeReview li.itemTypeReview:hover {
+    background: var(--background-black);
+    color: var(--text-white);
+}
+
+.cateFiterRv .listTypeReview li.itemTypeReview .lineitemType {
+    border: 0.1em solid #ddd;
+    width: -webkit-fill-available;
+    opacity: 0.5;
+    margin: 0em 0em 0.5em 0em;
+}
+
+.cateFiterRv .listTypeReview li.itemTypeReview .labelType {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding-right: 0.3em;
+}
+
+.listTypeReview li.itemTypeReview .labelType .nameType {
+    display: flex;
+    justify-content: flex-start;
+    text-transform: capitalize;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.listTypeReview li.itemTypeReview .labelType svg {
+    display: flex;
+    justify-content: flex-end;
+    font-weight: 500;
+    font-size: 1.0em;
+}
+/* End popup Review Filter */
+
+/* Popup li children  */
+.cateFiterRv .listTypeReview li.itemTypeReview .childrenPopup {
+    list-style-type: none;
+    display: none;
+    position: absolute;
+    left: 0%;
+    top: 2em;
+    height: fit-content;
+    z-index: 20;
+    background: var(--background-gray);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 8em;
+    border: 0.1em solid var(--color-border);
+    border-radius: 5px;
+}
+
+.cateFiterRv .listTypeReview li.itemTypeReview:hover > .childrenPopup {
+    display: flex;
+}
+
+.listTypeReview li.itemTypeReview .childrenPopup li.itemChildrenPopup {
+    width: 100%;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    /* margin: 0em 0.5em; */
+    padding: 0.3em 0em 0.3em 0.4em;
+    height: 100%;
+    border: var(--text-white);
+    transition: all 0.4s ease-in-out;
+}
+
+.listTypeReview li.itemTypeReview .childrenPopup li.itemChildrenPopup:hover {
+    background: var(--background-black);
+    color: var(--text-white);
+    border-color: var(--text-white);
+    font-weight: 600;
+}
+
+li.itemTypeReview .childrenPopup li.itemChildrenPopup .itemCircle {
+    display: inline-block;
+    width: 1.5em;
+    height: 1.5em;
+    border-radius: 50%;
+    margin-right: 0.1em;
+    cursor: pointer;
+    border: 0.1em solid #ccc;
+}
+li.itemTypeReview .childrenPopup li.itemChildrenPopup svg {
+    font-weight: 500;
+}
+
+li.itemTypeReview .childrenPopup li.itemChildrenPopup .descChilItem {
+    margin-left: 0.3em;
+}
+/* End Popup li children */
+
+/* SortByComent */
+.reviewProduct .sortFilter .sortByComment {
+    background: var(--background-white);
+    border-radius: 0;
+    border: 1px solid var(--background-rank);
+    height: auto;
+    margin: 0;
+    color: var(--color-cate-review);
+    width: 13em;
+    padding: 1em;
+    display: flex; 
+   justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+.reviewProduct .sortFilter .sortByComment .cateSort {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+.sortFilter .sortByComment .cateSort .nameSort {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--background-black);
+}
+
+.sortFilter .sortByComment .cateSort .typeName {
+    margin: 0;
+    color: var(--color-type);
+    font-size: 0.8em;
+    text-transform: capitalize;
+}
+
+.reviewProduct .sortFilter .sortByComment .cateDown {
+
+}
+
+.sortFilter .sortByComment .cateDown svg {
+    font-size: 1.8em;
+    color: var(--background-black);
+    font-weight: 600;
+}
+/* End SortByComent */
+
+/* Popup children SortBy */
+.reviewProduct .sortFilter .sortByComment ul.sortOrderBy {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 5em;
+    left: 0em;
+    border: 0.1em solid var(--color-border);
+    border-radius: 5px;
+}
+
+.reviewProduct .sortFilter .sortByComment:hover ul.sortOrderBy {
+    display: flex;
+}
+
+.sortFilter .sortByComment ul.sortOrderBy li.OrderByItem {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    transition: all 0.3s ease-in-out;
+}
+
+.sortByComment ul.sortOrderBy li.OrderByItem .orderByDetail {
+    text-decoration: none;
+    font-size: 0.8em;
+    color: var(--background-black);
+    text-transform: capitalize;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    display: block;
+    padding: 0.2em 0.4em;
+}
+
+.sortFilter .sortByComment ul.sortOrderBy li.OrderByItem:hover .orderByDetail {
+    background: var(--color-about-explore);
+    color: var(--color-cate-review);
+    font-weight: 500;
+}
+/* End popup children SortBy */
+
+/* Review Guest */
+.reviewProduct .reviewGuest {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    flex-wrap: wrap;
+    height: auto;
+    /* margin: 3em; */
+}
+
+.reviewProduct .reviewGuest .reviewInfo {
+    width: 35%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.reviewProduct .reviewGuest .reviewInfo .nameGuest {
+    font-size: 1.5em;
+    color: var(--text-color);
+    text-transform: capitalize;
+    font-weight: 900;
+}
+
+.reviewProduct .reviewGuest .reviewInfo .authenticateGuest {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: fit-content;
+    height: auto;
+}
+
+.reviewGuest .reviewInfo .authenticateGuest svg {
+    color: var(--color-green);
+    font-size: 1.3em;
+}
+
+.reviewGuest .reviewInfo .authenticateGuest .is_authen {
+    font-size: 1em;
+    text-transform: capitalize;
+    color: var(--color-type);
+    margin: 0 0 0 0.3em;
+}
+
+.reviewProduct .reviewGuest .reviewInfo .sizeOpinion,
+.reviewProduct .reviewGuest .reviewInfo .colorOpinion {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: fit-content;
+    height: auto;
+    margin-bottom: 0.7em;
+}
+
+.reviewGuest .reviewInfo .sizeOpinion .nameSize,
+.reviewGuest .reviewInfo .colorOpinion .nameColor {
+    font-weight: 700;
+    font-size: 1em;
+    color: var(--background-black);
+}
+
+.reviewGuest .reviewInfo .colorOpinion .circleColorReview {
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    border: 0.1em solid #ccc;
+}
+
+.reviewGuest .reviewInfo .sizeOpinion .typeSize,
+.reviewProduct .reviewGuest .reviewInfo .colorOpinion .circleColorReview {
+    margin: 0 0 0 0.5em;
+    font-size: 0.9em;
+    text-transform: uppercase;
+    color: var(--color-type);
+}
+
+.reviewProduct .reviewGuest .contentReview {
+    display: flex;
+    width: 65%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: auto;
+}
+
+.reviewProduct .reviewGuest .contentReview .quantityStar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 1.0em;
+}
+
+.reviewGuest .contentReview .quantityStar .starProduct {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.contentReview .quantityStar .starProduct svg {
+    font-size: 1.6em;
+}
+
+.reviewGuest .contentReview .quantityStar .timeReview {
+    color: var(--color-type);
+    font-size: 1.1em;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.reviewProduct .reviewGuest .contentReview .contentWrapper {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+}
+
+.reviewGuest .contentReview .contentWrapper .expressProduct {
+    font-size: 1.4em;
+    font-weight: 800;
+    color: var(--color-cate-review);
+    word-spacing: 0.2em;
+    margin-bottom: 0.5em;
+}
+
+.reviewGuest .contentReview .contentWrapper .contentDetailProduct {
+    font-size: 1.3em;
+    font-weight: 400;
+    color: var(--color-type);
+    word-spacing: 0.1em;
+    margin-bottom: 0.5em;
+}
+
+.reviewProduct .reviewGuest .lineitemReview {
+    border: 0.1em solid #ddd;
+    /* width: -webkit-fill-available; */
+    width: 100%;
+    opacity: 0.5;
+    margin: 0em 0em 0.5em 0em;
+}
+
+.reviewProduct .reviewGuest .readMoreReview {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 3em 0;
+    text-transform: uppercase;
+}
+
+.reviewProduct .reviewGuest .readMoreReview .reviewMoreBtn {
+    background-color: var(--background-black);
+    color: var(--background-white);
+    padding: 1em;
+    text-transform: capitalize;
+    font-size: 1em;
+    border: none;
+    width: 15rem;
+    border-radius: 0.6em;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+  
+.reviewProduct .reviewGuest .readMoreReview .reviewMoreBtn:hover {
+  background-color: var(--text-stores);
+}
+/* End Review Guest */
+
+/* Transparent */
+.reviewProduct .transparent {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1.2em 0em;
+    width: 100%;
+    height: auto;
+}
+
+.reviewProduct .transparent .titleTransparent {
+    color: var(--color-cate-review);
+    text-align: justify;
+    text-transform: capitalize;
+}
+
+.reviewProduct .transparent .descTransparent {
+    text-align: justify;
+    margin-top: 1em;
+    padding: 0em 4em;
+    width: 100%;
+    color: var(--color-price);
+}
+
+.reviewProduct .transparent .symbolList {
+    margin: 2em 0em;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+}
+
+.reviewProduct .transparent .symbolList .itemSymbol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.transparent .symbolList .itemSymbol img {
+    width: 4em;
+    height: 4em;
+}
+
+
+.transparent .symbolList .itemSymbol .contentName {
+    text-transform: capitalize;
+    margin-top: 0.5em;
+    font-size: 1em;
+    color: var(--color-price);
+}
+
+
+.transparent .symbolList .itemSymbol .priceSymbol {
+    text-transform: capitalize;
+    font-size: 1em;
+    margin-top: 0.5em;
+    color: var(--color-price);
+}
+
+/* End transparent */

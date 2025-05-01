@@ -61,7 +61,9 @@
     --background-white: #ffff;
     --text-color: #262626;
     --text-color-hover: #D0021B;
+    --color-cate-review: #161912;
     --color-price: #888;
+    --background-rank: #e1e0e0;
     --color-icons-hover: #e2c215;
     --color-type: #737373;
     --text-white: #fff;
@@ -83,4 +85,5 @@
     --text-button-color: #2d4277;
     --text-title: #2a2a2a;
     --text-stores: #a99d9d;
+    --color-green: #00C000;
 }

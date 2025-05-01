@@ -1,0 +1,572 @@
+.detailContainer {
+    max-width: 100%;
+    margin: 2em auto;
+}
+
+.detailContainer .detailBox {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 1em 2em;
+    height: 100%;
+    width: 100%;
+}
+
+
+.detailContainer .detailBox  .detailImage {
+    display: flex;
+    flex-basis: 65%;
+    justify-content: flex-start;
+    align-items: center;
+    flex-wrap: wrap;
+    height: 100%;
+}
+
+.detailBox  .detailImage  .detailImageItem {
+    width: 48%;
+    height: 100%;
+    margin: 0.5em;    
+}
+
+.detailBox  .detailImage  .detailImageItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.detailContainer .detailBox .infoProduct {
+    display: flex;
+    flex-basis: 35%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    margin-top: 0.5em;
+}
+
+.detailContainer .detailBox .infoProduct .breadcrumb {
+    font-size: 0.9em;
+    color: #aaa;
+    margin-bottom: 0.3em;
+}
+
+.detailContainer .detailBox .infoProduct .detail-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 0.2em;
+}
+
+.detailBox .infoProduct .detail-info .detail-title {
+    display: flex;
+    flex-basis: 50%;
+    flex-wrap: wrap;
+    font-weight: 400;
+    font-size: 1.9em;
+}
+
+.detailBox .infoProduct .detail-info .detailPrice {
+    display: flex;
+    justify-content: flex-end;
+    flex-basis: 35%;
+    text-align: end;
+}   
+
+.infoProduct .detail-info .detailPrice .detail-old {
+    font-size: 1.2em;
+    text-decoration: line-through;
+    color: #aaa;
+    margin-right: 0.5em;
+}
+
+.infoProduct .detail-info .detailPrice .detail-new {
+    font-size: 1.2em;
+    color: #000;
+    font-weight: 300;
+}
+
+.detailBox .infoProduct .reviewDetail {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+}
+
+.infoProduct .reviewDetail .totalRating {
+    line-height: 0;
+}
+
+
+.infoProduct .reviewDetail .totalRating svg {
+    font-size: 1.1em;
+}
+
+.infoProduct .reviewDetail .pointReview {
+    margin-left: 0.5em;
+    font-size: 1em;
+}
+
+
+.infoProduct .reviewDetail .pointReview .totalReview {
+    color: #737373;
+}
+
+.detailBox .infoProduct .view-more-line {
+    border: none;
+    border-top: 2px solid #ccc;
+    width: 100%;
+}
+
+.detailBox .infoProduct .detailColor {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 1em 0em;
+}
+
+.detailBox .infoProduct .detailColor .nameColor {
+    display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin-top: 0.5em;
+}
+
+.infoProduct .detailColor .nameColor .titleColor {
+    color: #000000;
+    font-weight: 500;
+    font-size: 1em;
+    margin: 0;
+}
+
+
+.infoProduct .detailColor .nameColor .listItemColor {
+    margin-left: 0.8em;
+}
+
+.detailColor .nameColor .listItemColor .itemName {
+    color: #737373;
+    font-weight: 300;
+    margin: 0 0.2em;
+}
+
+.nameColor .listItemColor .itemName .separator {
+    margin-left: 0.2em;
+}
+
+.detailBox .infoProduct .detailColor .detailOption {
+    margin-top: 0.5em;
+}
+
+.infoProduct .detailColor .detailOption .itemCircle {
+    display: inline-block;
+    width: 3em;
+    height: 3em;
+    border-radius: 50%;
+    margin-right: 0.5em;
+    cursor: pointer;
+    border: 0.1em solid #ccc;
+}
+
+.infoProduct .detailColor .detailOption .itemCircle:hover {
+    transform: scale(1.1);
+    border: 0.2em solid #aaa;
+}
+
+/* Info Size */
+
+.detailContainer .detailBox .infoProduct .sizeInfo {
+    display: flex;
+    justify-content: flex-start;
+    align-items:    flex-start;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.8em;
+}
+
+.detailBox .infoProduct .sizeInfo .titleSize {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.detailBox .infoProduct .sizeInfo .titleSize .nameSize{
+    font-weight: 600;
+    font-size: 1em;
+    color: #000;
+    text-align: left;
+}
+
+.detailBox .infoProduct .sizeInfo .titleSize .sizeBtn{
+    background-color: transparent;
+    font-size: 1em;
+    display: block;
+    outline: none;
+    border: none;
+    color: #aaa;
+    width: 7em;
+    height: auto;
+    text-decoration: underline;
+}
+
+.detailBox .infoProduct .sizeInfo .listSize {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: stretch;
+    gap: 1em;
+    align-items: center;
+    margin-top: 1.5em;
+    padding: 0;
+    width: 100%;
+    
+}
+
+.infoProduct .sizeInfo .listSize .itemSize {
+    width: 4em;
+    height: 3em;
+    background-color: #ffff;
+    line-height: 3.6;
+}
+
+.sizeInfo .listSize .itemSize .sizeBox {
+    font-size: 0.8em;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: transparent;
+    outline: none;
+    color: #000;
+    border: 1px solid #f5f4f4;
+    font-weight: 300;
+    transition: all 0.3s ease-in-out;
+}
+
+.sizeInfo .listSize .itemSize .sizeBox:hover {
+    border: 1px solid #4d4d4d;
+}
+/* End info Size */
+
+/* Add To Cart Btn */
+.infoProduct .addCartWrapper {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0;
+    width: 100%;
+}
+
+.infoProduct .addCartWrapper .addCartBtn {
+    background-color: var(--color-bottom-line);
+    box-shadow: 0 0 0 0;
+    color: var(--background-white);
+    padding: 1em;
+    text-transform: capitalize;
+    border-color: transparent;
+    font-size: 1em;
+    border: none;
+    width: 100%;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+
+.infoProduct .addCartWrapper .addCartBtn:hover {
+    background-color: var(--text-stores);
+  }
+/* End Add Cart Btn */
+
+/* Policy */
+.infoProduct .policyWrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 100%;
+}
+
+.infoProduct .policyWrapper .policyItem {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: flex-start;
+    margin: 0.9em 0em
+}
+
+.infoProduct .policyWrapper .policyItem .pictureItem {
+    width: 3em;
+    height: 3em;
+}
+
+.policyWrapper .policyItem .pictureItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.infoProduct .policyWrapper .policyItem .infoPolicyitem {
+    margin-left: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.policyWrapper .policyItem .infoPolicyitem .titlePolicy {
+    color: var(--background-black);
+    text-transform: capitalize;
+    font-size: 1em;
+    font-weight: 500;
+    text-align: justify;
+}
+
+.policyWrapper .policyItem .infoPolicyitem .contentPolicy {
+    color: var(--color-type);
+    font-size: 0.9em;
+    text-align: justify;
+    margin: 0;
+}
+
+.policyItem .infoPolicyitem .contentPolicy .detailPolicy {
+    color: var(--color-type);
+    text-transform: capitalize;
+    font-weight: 300;
+}
+/* End policy */
+
+/* Description product */
+.infoProduct .detailDescription {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.infoProduct .detailDescription .titleName {
+    color: var(--background-black);
+    font-size: 1.2em;
+    text-align: left;
+    word-spacing: 0.1em;
+    width: 100%;
+}
+
+.infoProduct .detailDescription .titleName .productDescription {
+    width: 100%;
+    margin-top: 1em;
+}
+
+.detailDescription .titleName .productDescription .contentProduct {
+    color: var(--text-stores);
+    font-size: 1.1em;
+    text-align: left;
+    margin: 0;
+}
+/* End policy */
+
+/* Model Fit */
+.infoProduct .suitableModel  {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.infoProduct .suitableModel .listModel {
+    display: flex;
+    align-items: center;
+    margin: 1em 0em;
+    width: 100%;
+}
+
+.infoProduct .suitableModel .listModel .nameModel {
+    color: var(--background-black);
+    font-size: 1em;
+    text-align: left;
+    text-transform: capitalize;
+    font-weight: 700;
+    width: 20%;
+}
+
+.infoProduct .suitableModel .listModel .descModel {
+    margin-left: 6em;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 80%;
+}
+
+.suitableModel .listModel .descModel .descItem {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1em;
+    text-transform: capitalize;
+}
+/* End Model Fit */
+
+/* sustainability */
+
+.infoProduct .sustainability {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.infoProduct .sustainability .nameSustainability {
+    color: var(--background-black);
+    font-size: 1em;
+    text-align: left;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.infoProduct .sustainability .sustainabiImage {
+    width: 100%;
+    height: 100%;
+}
+
+.infoProduct .sustainability .sustainabiImage img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+/* end  sustainability */
+
+/* Add Photo */
+.infoProduct .EverAddphoto {
+    margin-top: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    position: relative;
+}
+
+.infoProduct .EverAddphoto .EverlaneTitle {
+    color: var(--background-black);
+    font-size: 1.2em;
+    text-align: left;
+    width: 100%;
+}
+
+.infoProduct .EverAddphoto .EverlaneTitle .AddphotoYou {
+    margin-bottom: 0.2em;
+    width: 100%;
+}
+
+.EverAddphoto .EverlaneTitle .AddphotoYou .uploadPhoto {
+    width: fit-content;
+    background: transparent;
+    outline: none;
+    border: none;
+    text-transform: capitalize;
+    text-decoration: underline;
+    color: var(--text-color);
+}
+
+/* Slide Add your photto */
+.EverAddphoto .AddYourPhoto {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em 0em;
+    width: 100%;
+}
+
+.EverAddphoto .AddYourPhoto .SwiperContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+.EverAddphoto .AddYourPhoto .swiper-wrapper {
+    display: flex !important;
+    justify-content: center !important; /* Căn giữa thủ công */
+    transition: transform 0.3s ease-in-out;
+}
+
+.EverAddphoto .AddYourPhoto .slidesAddPhoto {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex: 0 0 100%;
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.EverAddphoto .AddYourPhoto .slidesAddPhoto .ItemsAddPhoto {
+    max-width: 100%;
+    width: 10em;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+
+.AddYourPhoto .slidesAddPhoto .ItemsAddPhoto .OnYouImages {
+    width: 10em;
+    height: 10em;
+}
+
+.slidesAddPhoto .ItemsAddPhoto .addYourImage img {
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+}
+
+.EverAddphoto .AddYourPhoto .AddPhotoPrev,
+.EverAddphoto .AddYourPhoto .AddPhotoNext {
+    position: absolute;
+    top: 9em;
+    transform: translateY(-50%);
+    background: var(--background-gray);
+    color: var(--background-black);
+    border: none;
+    border-radius: 3em;
+    display: block;
+    width: 2em;
+    height: 1.8em;
+    line-height: 0.8em;
+    font-size: 1em;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease-in;
+}
+
+.EverAddphoto .AddYourPhoto .AddPhotoPrev:hover,
+.EverAddphoto .AddYourPhoto .AddPhotoNext:hover {
+    background: var(--text-button-hover);
+    color: var(--color-button-nextprev);
+    
+    font-weight: 800;
+   
+}
+
+.EverAddphoto .AddYourPhoto .AddPhotoPrev {
+    left: 0%;
+}
+
+.EverAddphoto .AddYourPhoto .AddPhotoNext {
+    right: 0%;
+}
+/* End slide add your photo */
+
+/* End add photo */
+

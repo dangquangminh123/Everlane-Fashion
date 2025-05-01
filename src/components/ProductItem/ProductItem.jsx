@@ -40,7 +40,7 @@ const ProductItem = ({ product, getColorName }) => {
         </div>
 
       <div className="product-info">
-        <Link className="product-title">{product.title}</Link>
+        <Link to={"/detail_product"} className="product-title">{product.title}</Link>
         <div className="price">
           <span className="old-price">${product.priceOld}</span>
           <span className="new-price">${product.priceNew}</span>
