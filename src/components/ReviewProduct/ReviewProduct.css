@@ -394,7 +394,7 @@ li.itemTypeReview .childrenPopup li.itemChildrenPopup .descChilItem {
     width: 100%;
     flex-wrap: wrap;
     height: auto;
-    /* margin: 3em; */
+    margin: 3em 0em;
 }
 
 .reviewProduct .reviewGuest .reviewInfo {
@@ -531,7 +531,7 @@ li.itemTypeReview .childrenPopup li.itemChildrenPopup .descChilItem {
     margin: 0em 0em 0.5em 0em;
 }
 
-.reviewProduct .reviewGuest .readMoreReview {
+.reviewProduct .readMoreReview {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -540,7 +540,7 @@ li.itemTypeReview .childrenPopup li.itemChildrenPopup .descChilItem {
     text-transform: uppercase;
 }
 
-.reviewProduct .reviewGuest .readMoreReview .reviewMoreBtn {
+.reviewProduct .readMoreReview .reviewMoreBtn {
     background-color: var(--background-black);
     color: var(--background-white);
     padding: 1em;
@@ -553,7 +553,7 @@ li.itemTypeReview .childrenPopup li.itemChildrenPopup .descChilItem {
     transition: background 0.3s ease;
 }
   
-.reviewProduct .reviewGuest .readMoreReview .reviewMoreBtn:hover {
+.reviewProduct .readMoreReview .reviewMoreBtn:hover {
   background-color: var(--text-stores);
 }
 /* End Review Guest */

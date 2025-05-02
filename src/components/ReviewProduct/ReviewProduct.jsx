@@ -8,6 +8,7 @@ import { RiArrowDownSFill } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
 import { FaCirclePlus } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6";
+import { FaStarHalfAlt } from "react-icons/fa";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
 import symbol1 from '../../assets/DetailProduct/symbol1.png';
 import symbol2 from '../../assets/DetailProduct/symbol2.png'
@@ -49,6 +50,51 @@ const ReviewProduct = () => {
     { id: 1, name: "Most Recently"},
   ]
 
+  const reviews = [
+    {
+      id: 1,
+      guestName: "ElizabethRBklyn",
+      isVerified: true,
+      starRating: 3, 
+      sizePurchased: "L", 
+      usualSize: "L",
+      colorSelected: "#FF0000", 
+      bodyType: "Petite",
+      title: "Warm and very attractive on",
+      content:
+        "Got this to keep my husband warm on those chilly late fall days. He loves it as it not only is pretty warm but he looks good in it and he knows it.",
+      createdAt: "2025-04-18T14:30:00Z",
+    },
+    {
+      id: 2,
+      guestName: "Broadhaven",
+      isVerified: true,
+      starRating: 4,
+      sizePurchased: "L",
+      usualSize: "L",
+      colorSelected: "#FF0000",
+      bodyType: "Petite",
+      title: "Perfect pants for any occasion",
+      content:
+        "The athletic fit is outstanding..great fabric and the color is perfect",
+      createdAt: "2025-03-18T18:10:00Z",
+    },
+    {
+      id: 3,
+      guestName: "Sa keay",
+      isVerified: true,
+      starRating: 4.5,
+      sizePurchased: "XL",
+      usualSize: "XL",
+      colorSelected: "#0000FF",
+      bodyType: "Average",
+      title: "Super trousers",
+      content: "Lovely material, these look really smart and feel like they will last.",
+      createdAt: "2024-07-18T20:10:00Z",
+    },
+    // thêm nhiều review khác...
+  ];
+
   const [selected, setSelected] = useState("Most Recently");
 
   const handleSelect = (name) => {
@@ -71,6 +117,40 @@ const ReviewProduct = () => {
   const handleFilterClick = () => {
     setShowFilter((prev) => !prev);
   };
+
+  function renderStars(rating) {
+    const totalStars = 5;
+    const stars = [];
+  
+    for (let i = 0; i < totalStars; i++) {
+      if (i + 1 <= rating) {
+        stars.push(<FaStar key={`star-full-${i}`} />);
+      } else if (i + 0.5 <= rating) {
+        stars.push(<FaStarHalfAlt key={`star-half-${i}`} />);
+      } else {
+        stars.push(<FaRegStar key={`star-empty-${i}`} />);
+      }
+    }
+  
+    return <div className="starProduct">{stars}</div>;
+  }
+
+  function formatRelativeTime(dateString) {
+    const now = new Date();
+    const createdDate = new Date(dateString);
+    const diffInMs = now - createdDate;
+    const diffInDays = Math.floor(diffInMs / (1000 * 60 * 60 * 24));
+  
+    if (diffInDays === 0) return "Today";
+    if (diffInDays === 1) return "Yesterday";
+    if (diffInDays <= 7) return `${diffInDays} days ago`;
+  
+    const diffInWeeks = Math.floor(diffInDays / 7);
+    if (diffInWeeks <= 4) return `${diffInWeeks} week${diffInWeeks > 1 ? 's' : ''} ago`;
+  
+    const diffInMonths = Math.floor(diffInDays / 30); // gần đúng, không cần quá chính xác
+    return `${diffInMonths} month${diffInMonths > 1 ? 's' : ''} ago`;
+  }
   return (
     <>
       <div className="reviewProduct">
@@ -204,8 +284,50 @@ const ReviewProduct = () => {
           </div>
         </div>
         
-        <div className="reviewGuest">
+        {reviews.map((review) => (
+        <div className="reviewGuest" key={review.id}>
             <div className="reviewInfo">
+                <h3 className="nameGuest">{review.guestName}</h3>
+                {review.isVerified && (
+                  <span className="authenticateGuest">
+                    <IoCheckmarkCircleSharp />
+                    <p className="is_authen">Verified</p>
+                  </span>
+                )}
+                <div className="sizeOpinion">
+                    <small className="nameSize">Size Purchased:</small>
+                    <p className="typeSize">{review.sizePurchased}</p>
+                </div>
+                <div className="sizeOpinion">
+                    <small className="nameSize">Usual Size:</small>
+                    <p className="typeSize">{review.usualSize}</p>
+                </div>
+                <div className="colorOpinion">
+                    <small className="nameColor">Color Selected:</small>
+                    <p className="circleColorReview" style={{ background: review.colorSelected }}></p>
+                </div>
+                <div className="sizeOpinion">
+                    <small className="nameSize">Body Type:</small>
+                    <p className="typeSize">{review.bodyType}</p>
+                </div>
+            </div>
+
+            <div className="contentReview">
+                <div className="quantityStar">
+                {renderStars(review.starRating)}
+                  <span className="timeReview">
+                    {formatRelativeTime(review.createdAt)}
+                  </span>
+                </div>
+                <div className="contentWrapper">
+                    <span className="expressProduct">{review.title}</span>
+                    <span className="contentDetailProduct">{review.content}</span>
+                </div>
+            </div>
+            <hr className="lineitemReview"/>
+        </div>
+        ))}
+            {/* <div className="reviewInfo">
                 <h3 className="nameGuest">ElizabethRBklyn</h3>
                 <span className="authenticateGuest">
                   <IoCheckmarkCircleSharp />
@@ -248,107 +370,61 @@ const ReviewProduct = () => {
                       is pretty warm but he looks good in it and he knows it.</span>
                 </div>
             </div>
-            <hr className="lineitemReview"/>
-
-            <div className="reviewInfo">
-                <h3 className="nameGuest">ElizabethRBklyn</h3>
-                <span className="authenticateGuest">
-                  <IoCheckmarkCircleSharp />
-                  <p className="is_authen">Verified</p>
-                </span>
-                <div className="sizeOpinion">
-                    <small className="nameSize">Size Purchased:</small>
-                    <p className="typeSize">L</p>
-                </div>
-                <div className="sizeOpinion">
-                    <small className="nameSize">Usual Size:</small>
-                    <p className="typeSize">L</p>
-                </div>
-                <div className="colorOpinion">
-                    <small className="nameColor">Color Selected:</small>
-                    <p className="circleColorReview" style={{ background: "#FF0000" }}></p>
-                </div>
-                <div className="sizeOpinion">
-                    <small className="nameSize">Body Type:</small>
-                    <p className="typeSize">Petite</p>
-                </div>
-            </div>
-
-            <div className="contentReview">
-                <div className="quantityStar">
-                  <div className="starProduct">
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaRegStar />
-                      <FaRegStar />
-                  </div>
-                  <span className="timeReview">
-                    14 days ago
-                  </span>
-                </div>
-                <div className="contentWrapper">
-                    <span className="expressProduct">Warm and very attractive on</span>
-                    <span className="contentDetailProduct">Got this to keep my husband warm on those chilly late fall days. He loves it as it not only 
-                      is pretty warm but he looks good in it and he knows it.</span>
-                </div>
-            </div>
-            <hr className="lineitemReview"/>
+            <hr className="lineitemReview"/> */}
 
             <div className="readMoreReview">
                 <button className="reviewMoreBtn">
                       read more review
                 </button>
             </div>
-        </div>
         
 
-        <div className="transparent">
-            <h4 className="titleTransparent">Transparent Pricing</h4>
-            <span className="descTransparent">
-            We publish what it costs us to make every one of our products. There are a lot of costs we can't neatly account for - 
-            like design, fittings, wear testing, rent on office and retail space - but we believe you deserve to know what goes into making the products you love.
-            </span>
-            <div className="symbolList">
-              <div className="itemSymbol">
-                <img src={symbol1} alt="" />
-                {/* <div className="contentSymbol"> */}
-                    <span className="contentName">Materials</span>
-                    <span className="priceSymbol">$47.96</span>
-                {/* </div> */}
+          <div className="transparent">
+              <h4 className="titleTransparent">Transparent Pricing</h4>
+              <span className="descTransparent">
+              We publish what it costs us to make every one of our products. There are a lot of costs we can't neatly account for - 
+              like design, fittings, wear testing, rent on office and retail space - but we believe you deserve to know what goes into making the products you love.
+              </span>
+              <div className="symbolList">
+                <div className="itemSymbol">
+                  <img src={symbol1} alt="" />
+                  {/* <div className="contentSymbol"> */}
+                      <span className="contentName">Materials</span>
+                      <span className="priceSymbol">$47.96</span>
+                  {/* </div> */}
+                </div>
+                <div className="itemSymbol">
+                  <img src={symbol2} alt="" />
+                  {/* <div className="contentSymbol"> */}
+                      <span className="contentName">Hardware</span>
+                      <span className="priceSymbol">$5.74</span>
+                  {/* </div> */}
+                </div>
+                <div className="itemSymbol">
+                  <img src={symbol3} alt="" />
+                  {/* <div className="contentSymbol"> */}
+                      <span className="contentName">Labor</span>
+                      <span className="priceSymbol">$13.75</span>
+                  {/* </div> */}
+                </div>
+                <div className="itemSymbol">
+                  <img src={symbol4} alt="" />
+                  {/* <div className="contentSymbol"> */}
+                      <span className="contentName">Duties</span>
+                      <span className="priceSymbol">$8.09</span>
+                  {/* </div> */}
+                </div>
+                <div className="itemSymbol">
+                  <img src={symbol5} alt="" />
+                  {/* <div className="contentSymbol"> */}
+                      <span className="contentName">Transport</span>
+                      <span className="priceSymbol">$1.53</span>
+                  {/* </div> */}
+                </div>
               </div>
-              <div className="itemSymbol">
-                <img src={symbol2} alt="" />
-                {/* <div className="contentSymbol"> */}
-                    <span className="contentName">Hardware</span>
-                    <span className="priceSymbol">$5.74</span>
-                {/* </div> */}
-              </div>
-              <div className="itemSymbol">
-                <img src={symbol3} alt="" />
-                {/* <div className="contentSymbol"> */}
-                    <span className="contentName">Labor</span>
-                    <span className="priceSymbol">$13.75</span>
-                {/* </div> */}
-              </div>
-              <div className="itemSymbol">
-                <img src={symbol4} alt="" />
-                {/* <div className="contentSymbol"> */}
-                    <span className="contentName">Duties</span>
-                    <span className="priceSymbol">$8.09</span>
-                {/* </div> */}
-              </div>
-              <div className="itemSymbol">
-                <img src={symbol5} alt="" />
-                {/* <div className="contentSymbol"> */}
-                    <span className="contentName">Transport</span>
-                    <span className="priceSymbol">$1.53</span>
-                {/* </div> */}
-              </div>
-            </div>
+          </div>  
         </div>
-      </div>
-      
+    
     </>
   )
 }
