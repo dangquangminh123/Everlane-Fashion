@@ -24,6 +24,7 @@ import Everworld from './pages/everWorld/everWorld';
 import DetailEverword from './pages/DetailBlog/detailBlog';
 import DetailProduct from "./pages/DetailProduct/DetailProduct";
 import PageProduct from "./pages/listProduct/listProduct";
+import cart from "./pages/Carrt/cart";
 const Layout = () =>{
   return (
     <div className='layout-app'>

@@ -9,9 +9,12 @@ import { LuShoppingCart } from "react-icons/lu";
 import cur from '../../assets/us 1.png'
 import logo from '../../assets/Logo.png'
 import { gsap } from 'gsap';
+import CartSidebar from "../../pages/Carrt/cart";
 
 const Headers = () => {
   const currentPath = location.pathname;
+  const [isCartOpen, setCartOpen] = useState(false);
+
   const menuItems = [
     { id: 1, name: "Woman", link: "/list_product", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
     { id: 2, name: "Men", link: "/list_product", subMenu: ["New Arrivals", "Best Sellers", "Clothing", "Tops & Sweaters", "Pants & Jeans", "Outerwear", "Shoes & Bags", "Sale"]},
@@ -178,7 +181,14 @@ const Headers = () => {
             <div className="PersonalHeader d-flex justify-content-end">
                 {[IoSearch, MdOutlinePerson, LuShoppingCart].map((Icon, index) => (
                     <div className="PersonOption" ref={el => personOptionRef.current[index] = el} key={index}>
-                        <button className='DetailsItems' ref={el => detailsItemsRef.current[index] = el}>
+                        <button className='DetailsItems'
+                            ref={el => detailsItemsRef.current[index] = el}
+                            onClick={() => {
+                              if (Icon === LuShoppingCart) {
+                                setCartOpen(true);
+                                document.body.style.overflow = "hidden"; // Vô hiệu scroll
+                              }
+                            }}>
                             <Icon />
                         </button>
                     </div>
@@ -208,8 +218,16 @@ const Headers = () => {
             })}
         </ul>
       )}
+
+    <CartSidebar isOpen={isCartOpen} onClose={() => {
+      setCartOpen(false);
+      document.body.style.overflow = "auto"; // Bật lại scroll
+    }} />
     </>
+  
+    
   )
+ 
 }
 
 export default Headers
