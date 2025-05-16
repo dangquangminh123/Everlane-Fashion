@@ -10,11 +10,7 @@ import { FaCirclePlus } from "react-icons/fa6";
 import { FaRegStar } from "react-icons/fa6";
 import { FaStarHalfAlt } from "react-icons/fa";
 import { IoCheckmarkCircleSharp } from "react-icons/io5";
-import symbol1 from '../../assets/DetailProduct/symbol1.png';
-import symbol2 from '../../assets/DetailProduct/symbol2.png'
-import symbol3 from '../../assets/DetailProduct/symbol3.png'
-import symbol4 from '../../assets/DetailProduct/symbol4.png'
-import symbol5 from '../../assets/DetailProduct/symbol5.png'
+import TransparentPricing from "../Transparent/transparent";
 
 const ReviewProduct = () => {
   const ratings = [
@@ -327,50 +323,6 @@ const ReviewProduct = () => {
             <hr className="lineitemReview"/>
         </div>
         ))}
-            {/* <div className="reviewInfo">
-                <h3 className="nameGuest">ElizabethRBklyn</h3>
-                <span className="authenticateGuest">
-                  <IoCheckmarkCircleSharp />
-                  <p className="is_authen">Verified</p>
-                </span>
-                <div className="sizeOpinion">
-                    <small className="nameSize">Size Purchased:</small>
-                    <p className="typeSize">L</p>
-                </div>
-                <div className="sizeOpinion">
-                    <small className="nameSize">Usual Size:</small>
-                    <p className="typeSize">L</p>
-                </div>
-                <div className="colorOpinion">
-                    <small className="nameColor">Color Selected:</small>
-                    <p className="circleColorReview" style={{ background: "#FF0000" }}></p>
-                </div>
-                <div className="sizeOpinion">
-                    <small className="nameSize">Body Type:</small>
-                    <p className="typeSize">Petite</p>
-                </div>
-            </div>
-
-            <div className="contentReview">
-                <div className="quantityStar">
-                  <div className="starProduct">
-                      <FaStar />
-                      <FaStar />
-                      <FaStar />
-                      <FaRegStar />
-                      <FaRegStar />
-                  </div>
-                  <span className="timeReview">
-                    14 days ago
-                  </span>
-                </div>
-                <div className="contentWrapper">
-                    <span className="expressProduct">Warm and very attractive on</span>
-                    <span className="contentDetailProduct">Got this to keep my husband warm on those chilly late fall days. He loves it as it not only 
-                      is pretty warm but he looks good in it and he knows it.</span>
-                </div>
-            </div>
-            <hr className="lineitemReview"/> */}
 
             <div className="readMoreReview">
                 <button className="reviewMoreBtn">
@@ -379,50 +331,7 @@ const ReviewProduct = () => {
             </div>
         
 
-          <div className="transparent">
-              <h4 className="titleTransparent">Transparent Pricing</h4>
-              <span className="descTransparent">
-              We publish what it costs us to make every one of our products. There are a lot of costs we can't neatly account for - 
-              like design, fittings, wear testing, rent on office and retail space - but we believe you deserve to know what goes into making the products you love.
-              </span>
-              <div className="symbolList">
-                <div className="itemSymbol">
-                  <img src={symbol1} alt="" />
-                  {/* <div className="contentSymbol"> */}
-                      <span className="contentName">Materials</span>
-                      <span className="priceSymbol">$47.96</span>
-                  {/* </div> */}
-                </div>
-                <div className="itemSymbol">
-                  <img src={symbol2} alt="" />
-                  {/* <div className="contentSymbol"> */}
-                      <span className="contentName">Hardware</span>
-                      <span className="priceSymbol">$5.74</span>
-                  {/* </div> */}
-                </div>
-                <div className="itemSymbol">
-                  <img src={symbol3} alt="" />
-                  {/* <div className="contentSymbol"> */}
-                      <span className="contentName">Labor</span>
-                      <span className="priceSymbol">$13.75</span>
-                  {/* </div> */}
-                </div>
-                <div className="itemSymbol">
-                  <img src={symbol4} alt="" />
-                  {/* <div className="contentSymbol"> */}
-                      <span className="contentName">Duties</span>
-                      <span className="priceSymbol">$8.09</span>
-                  {/* </div> */}
-                </div>
-                <div className="itemSymbol">
-                  <img src={symbol5} alt="" />
-                  {/* <div className="contentSymbol"> */}
-                      <span className="contentName">Transport</span>
-                      <span className="priceSymbol">$1.53</span>
-                  {/* </div> */}
-                </div>
-              </div>
-          </div>  
+            <TransparentPricing />
         </div>
     
     </>

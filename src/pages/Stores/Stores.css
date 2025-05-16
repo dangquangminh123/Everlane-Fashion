@@ -49,8 +49,8 @@
 }
 
 .Itemstore .imageStore {
-    width: 100%;
-    height: 100%;    
+    width: 35em;
+    height: fit-content;
 }
 
 .Itemstore .imageStore img {
@@ -84,4 +84,192 @@
 
 .Itemstore .detailStore .addressStore:hover {
     color: var(--text-stores);
+}
+
+
+/* Branch Css */
+.detailBranch {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin: 0em 1em;;
+}
+
+.detailBranch .detailsImage,
+.detailBranch .infoDetailBranch {
+  flex: 1;
+  height: 24em;
+  box-sizing: border-box;
+  padding-right: 0.4em;
+}
+
+
+.detailBranch .detailsImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* hoặc contain tùy mục đích */
+  display: block;
+}
+
+/* InfoBranch */
+.detailBranch .infoDetailBranch {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 2em;
+}
+
+/* 1 aboutStore */
+.infoDetailBranch .aboutsStore {
+    height: auto;
+    width: 100%;
+    min-height: 12em;
+    border-bottom: 1px solid #dadada;
+}
+
+.infoDetailBranch .aboutsStore .headerBranch {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.aboutsStore .headerBranch .nameAddress {
+    font-size: 1.7em;
+    font-weight: 700;
+    text-align: left;
+}
+
+.aboutsStore .headerBranch .closeBranch {
+    text-align: right;
+
+}
+
+.aboutsStore .headerBranch .closeBranch svg {
+    font-size: 1.7em;
+    font-weight: 700;
+}
+
+.infoDetailBranch .aboutsStore .gereralAddress {
+    display: flex;
+    justify-content: left;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 1em;
+    gap: 0.5em;
+}
+
+.aboutsStore .gereralAddress .streetAddress {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 45%;
+    font-style: italic;
+    color: var(--color-type);
+}
+
+.gereralAddress .streetAddress .nameStreet {
+    margin-bottom: 0.5em;
+    font-size: 0.9em;
+}
+
+.gereralAddress .streetAddress .phoneAddress {
+    margin-bottom: 0.5em;
+}
+
+.gereralAddress .streetAddress .checkDirection {
+    color: var(--text-color);
+    font-size: 0.99em;
+}
+
+.aboutsStore .gereralAddress .calenderOpen {
+    display: flex;
+    width: 55%;
+}
+
+/* calenderOpen */
+.aboutsStore .gereralAddress .calenderOpen {
+    display: flex;
+    width: 55%;
+    justify-content: space-around;
+    color: var(--color-type);
+}
+
+.gereralAddress .calenderOpen .inweekend {
+    word-spacing: 0.1em;
+}
+
+.calenderOpen .inweekend .dayOpen {
+    font-size: 1em;
+    text-align: justify;
+    text-transform: capitalize;
+}
+
+.calenderOpen .inweekend .timeOpen {
+    font-size: 1em;
+    text-align: justify;
+    word-spacing: 0.1em;
+}
+
+.gereralAddress .calenderOpen .lastweekend {
+    word-spacing: 0.1em;
+}
+
+.calenderOpen .lastweekend .dayOpen {
+    font-size: 1em;
+    text-align: justify;
+    text-transform: capitalize;
+}
+
+.calenderOpen .lastweekend .timeOpen {
+    font-size: 1em;
+    text-align: justify;
+    word-spacing: 0.1em;
+}
+/* End 1 aboutStore */
+
+/* 2 generalIn */
+
+.infoDetailBranch .generalIn {
+   margin-top: 1.6em;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.infoDetailBranch .generalIn .timeMeeting {
+    font-weight: 700;
+    font-size: 1.19em;
+    text-align: justify;
+    margin-bottom: 0.3em;
+}
+
+.infoDetailBranch .generalIn .questionDetail {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.5em;
+    margin-bottom: 0.7em;
+}
+
+.generalIn .questionDetail .contentMeeting {
+    font-size: 1em;
+    text-align: justify;
+    word-spacing: 0.05em;
+    color: var(--color-price);
+}
+
+.generalIn .questionDetail .timeOpenMeeting {
+    font-size: 1em;
+    text-align: justify;
+    letter-spacing: 0.14em;
+    color: var(--color-price);
+}
+
+.infoDetailBranch .generalIn .checkDirection {
+    color: var(--color-bottom-line);
 }
