@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect }  from 'react';
+import { Row, Col } from 'react-bootstrap';
 import StoresImage from '../../assets/Stores/stores.png';
 import StoresImage1 from '../../assets/Stores/stores_1.png';
 import StoresImage2 from '../../assets/Stores/stores_2.png';
@@ -33,7 +34,6 @@ import StoresImage20_2 from '../../assets/Stores/stores20_2.png';
 import { IoMdClose } from "react-icons/io";
 import { MdKeyboardArrowRight } from "react-icons/md";
 import { AnimatePresence, motion } from 'framer-motion';
-import Col from 'react-bootstrap/Col';
 import './Stores.css';
 import { Link } from 'react-router-dom';
 
@@ -236,103 +236,175 @@ const listExplore  = [
         link: "/stores"
       }
     }, 
-    // {city: "MCLEAN", picture: StoresImage10, address: "Tysons Corner"}, 
   ];
+
 const Stores = () => {
-  const [selectedStore, setSelectedStore] = useState(null);
+  const [selectedStoreId, setSelectedStoreId] = useState(null);
 
   const handleSelectStore = (store) => {
-    setSelectedStore(store);
+    if (selectedStoreId === store.id) {
+      setSelectedStoreId(null); // Click lại chính nó thì đóng
+    } else {
+      setSelectedStoreId(store.id); // Mở mới
+    }
   };
 
   const handleCloseBranch = () => {
-    setSelectedStore(null);
+    setSelectedStoreId(null);
   };
 
-  return (
-    <>
-        <div className="StoresBox">
-            <div className='BoxTitle'>
-                <h1 className='TitleIntro'>Stores</h1>
-                <span className='findOurStore'>Find one of our 11 stores nearest you.</span>
-            </div>
+  const rows = [];
+  for (let i = 0; i < listExplore.length; i += 3) {
+    rows.push(listExplore.slice(i, i + 3));
+  }
 
-            <div className="StoresBody">
-              {listExplore.map((item, index) => (
-                <Col xs={12} md={4} key={index}>
-                    <div className="Itemstore" onClick={() => handleSelectStore(item)}>
-                        <div className="imageStore">
-                            <img src={item.picture} alt="" />
-                        </div> 
-                        <div className="detailStore">
-                            <span className='cityStore'>{item.city}</span>
-                            <p className='addressStore'>{item.address}</p>
-                        </div>
+  return (
+    <div className="StoresBody">
+      {rows.map((rowItems, rowIndex) => {
+        return (
+          <React.Fragment key={`row-${rowIndex}`}>
+            {/* Row chứa 3 item */}
+            <Row>
+              {rowItems.map((item, colIndex) => (
+                <Col xs={12} md={4} key={`item-${rowIndex}-${colIndex}`}>
+                  <div
+                    className="Itemstore"
+                    onClick={() => handleSelectStore(item)}
+                  >
+                    <div className="imageStore">
+                      <img src={item.picture} alt="" />
                     </div>
+                    <div className="detailStore">
+                      <span className="cityStore">{item.city}</span>
+                      <p className="addressStore">{item.address}</p>
+                    </div>
+                  </div>
                 </Col>
               ))}
-            </div>
+            </Row>
 
-          <AnimatePresence>
-          {selectedStore && (
-            <motion.div  className="detailBranch"
-                initial={{ height: 0, opacity: 0 }}
-                animate={{ height: 'auto', opacity: 1 }}
-                exit={{ height: 0, opacity: 0 }}
-                transition={{ duration: 0.4 }}
-              >
-            
-              {selectedStore.images.map((img, i) => (
-                <div className="detailsImage"  key={i}>
-                  <img src={img} alt="" />
-                </div>
-               ))}
-             
-              <div className="infoDetailBranch">
-                <div className="aboutsStore">
-                  <div className="headerBranch">
-                    <h3 className='nameAddress'>{selectedStore.name}</h3>
-                    <span className='closeBranch' onClick={handleCloseBranch}><IoMdClose /></span>
-                  </div>
-                  <div className="gereralAddress">
-                    <div className="streetAddress">
+            {/* Detail branch nằm dưới đúng hàng đang chọn */}
+            <AnimatePresence>
+              {rowItems.some((s) => s.id === selectedStoreId) && (
+                <Row>
+                  <Col xs={12}>
+                    <motion.div
+                      className="detailBranch"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.4 }}
+                    >
+                      {(() => {
+                        const selectedStore = listExplore.find(
+                          (s) => s.id === selectedStoreId
+                        );
+                        if (!selectedStore) return null;
 
-                      <span className='nameStreet'>{selectedStore.detailAddress}</span>
-                      <span className='phoneAddress'>{selectedStore.phone}</span>
-                      <Link to={selectedStore.directionLink} className='checkDirection'>Get Directions</Link>
-                    </div>
-                    <div className="calenderOpen">
-                      <div className="inweekend">
-                        <div className="dayOpen">{selectedStore.openingHours.weekdays.day}</div>
-                        <div className="timeOpen">{selectedStore.openingHours.weekdays.time}</div>
-                      </div>
-                      <div className='lastweekend'>
-                        <div className="dayOpen">{selectedStore.openingHours.weekend.day}</div>
-                        <div className="timeOpen">{selectedStore.openingHours.weekend.time}</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                        return (
+                          <>
+                            {selectedStore.images.map((img, i) => (
+                              <div className="detailsImage" key={i}>
+                                <img src={img} alt="" />
+                              </div>
+                            ))}
 
-                {selectedStore.session.available && (
-                  <div className="generalIn">
-                    <span className="timeMeeting">{selectedStore.session.title}</span>
-                    <div className="questionDetail">
-                      <span className='contentMeeting'>{selectedStore.session.description}</span>
-                      <span className='timeOpenMeeting'>{selectedStore.session.time}</span>
-                    </div>
-                    <Link to={selectedStore.session.link} className='checkDirection'>Book Here</Link>
-                  </div>
-                 )}
-              </div>
-            </motion.div>
-            )}
-         </AnimatePresence>
+                            <div className="infoDetailBranch">
+                              <div className="aboutsStore">
+                                <div className="headerBranch">
+                                  <h3 className="nameAddress">
+                                    {selectedStore.name}
+                                  </h3>
+                                  <span
+                                    className="closeBranch"
+                                    onClick={handleCloseBranch}
+                                  >
+                                    <IoMdClose />
+                                  </span>
+                                </div>
+                                <div className="gereralAddress">
+                                  <div className="streetAddress">
+                                    <span className="nameStreet">
+                                      {selectedStore.detailAddress}
+                                    </span>
+                                    <span className="phoneAddress">
+                                      {selectedStore.phone}
+                                    </span>
+                                    <Link
+                                      to={selectedStore.directionLink}
+                                      className="checkDirection"
+                                    >
+                                      Get Directions
+                                    </Link>
+                                  </div>
+                                  <div className="calenderOpen">
+                                    <div className="inweekend">
+                                      <div className="dayOpen">
+                                        {
+                                          selectedStore.openingHours.weekdays
+                                            .day
+                                        }
+                                      </div>
+                                      <div className="timeOpen">
+                                        {
+                                          selectedStore.openingHours.weekdays
+                                            .time
+                                        }
+                                      </div>
+                                    </div>
+                                    <div className="lastweekend">
+                                      <div className="dayOpen">
+                                        {
+                                          selectedStore.openingHours.weekend
+                                            .day
+                                        }
+                                      </div>
+                                      <div className="timeOpen">
+                                        {
+                                          selectedStore.openingHours.weekend
+                                            .time
+                                        }
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
 
+                              {selectedStore.session.available && (
+                                <div className="generalIn">
+                                  <span className="timeMeeting">
+                                    {selectedStore.session.title}
+                                  </span>
+                                  <div className="questionDetail">
+                                    <span className="contentMeeting">
+                                      {selectedStore.session.description}
+                                    </span>
+                                    <span className="timeOpenMeeting">
+                                      {selectedStore.session.time}
+                                    </span>
+                                  </div>
+                                  <Link
+                                    to={selectedStore.session.link}
+                                    className="checkDirection"
+                                  >
+                                    Book Here
+                                  </Link>
+                                </div>
+                              )}
+                            </div>
+                          </>
+                        );
+                      })()}
+                    </motion.div>
+                  </Col>
+                </Row>
+              )}
+            </AnimatePresence>
+          </React.Fragment>
+        );
+      })}
+    </div>
+  );
+};
 
-        </div>
-    </>
-  )
-}
-
-export default Stores
+export default Stores;
